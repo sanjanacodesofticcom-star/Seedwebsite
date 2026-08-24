@@ -15,25 +15,27 @@ module.exports = {
           400: '#8891A3',
         },
         brand: {
+          lime: '#ABEF06',
           ig: '#962FBF',
           'ig-warm': '#F0554D',
           fb: '#1877F2',
           wa: '#25D366',
-          focus: '#2A3FE0',
         },
         paper: {
           DEFAULT: '#FFFFFF',
-          tint: '#F6F7FB',
+          tint: '#F8FAFC',
         },
         line: {
-          DEFAULT: '#E7E9F0',
+          DEFAULT: '#E2E8F0',
           dark: '#1E293B',
         }
       },
       fontFamily: {
-        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
-        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-mono)', 'monospace'],
+        heading: ["'Segoe UI'", "-apple-system", "BlinkMacSystemFont", "Roboto", "sans-serif"],
+        display: ["'Segoe UI'", "-apple-system", "BlinkMacSystemFont", "Roboto", "sans-serif"],
+        body: ["'Inter'", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        sans: ["'Inter'", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        mono: ["'Segoe UI'", "'Inter'", "sans-serif"],
       },
     },
   },
