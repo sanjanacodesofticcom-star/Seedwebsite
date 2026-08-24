@@ -46,7 +46,11 @@ export const metadata = {
     follow: true,
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    apple: '/favicon.png',
   },
 };
 
@@ -56,7 +60,7 @@ export default function RootLayout({ children }) {
     '@type': 'Organization',
     name: 'GetAseed',
     url: 'https://getaseed.com',
-    logo: 'https://getaseed.com/images/Logo.svg',
+    logo: 'https://getaseed.com/images/getaseed-full-logo.svg',
     description: 'Official Meta Cloud API Partner automating conversational commerce across WhatsApp, Facebook Messenger, and Instagram.',
     contactPoint: {
       '@type': 'ContactPoint',
