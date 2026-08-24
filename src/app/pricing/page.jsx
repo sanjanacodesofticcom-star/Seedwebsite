@@ -28,42 +28,36 @@ export default function PricingPage() {
 
   return (
     <div className="bg-white">
-      {/* 1. Sky Atmosphere Hero Section */}
-      <section className="sky-hero-bg pt-12 pb-20 sm:pb-28 text-white relative">
+      {/* 1. Brand Hero Section */}
+      <section className="brand-hero-bg pt-12 pb-20 sm:pb-28 text-[#0B1220] relative">
         <div className="container-xl max-w-4xl mx-auto space-y-6 text-center relative z-10">
           <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B1220]/80 backdrop-blur-md border border-white/20 text-white shadow-md">
-              <ShieldCheck size={14} className="text-[#ABEF06]" />
-              <span className="text-[12.5px] font-mono font-bold tracking-wide uppercase text-white">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-sm text-[#0B1220]">
+              <ShieldCheck size={14} className="text-[#25D366]" />
+              <span className="text-[12.5px] font-mono font-bold tracking-wide uppercase text-[#0B1220]">
                 Fair, Transparent Pricing — Zero Markup Fees
               </span>
             </div>
           </div>
 
-          <h1 
-            className="text-[38px] sm:text-[54px] lg:text-[62px] font-extrabold text-white tracking-tight leading-[1.08]"
-            style={{ textShadow: '0 2px 20px rgba(0, 0, 0, 0.25)' }}
-          >
+          <h1 className="text-[38px] sm:text-[54px] lg:text-[62px] font-extrabold text-[#0B1220] tracking-tight leading-[1.08]">
             Choose the plan that fits your growth
           </h1>
 
-          <p 
-            className="text-[17px] sm:text-[19px] text-white font-medium max-w-2xl mx-auto leading-relaxed"
-            style={{ textShadow: '0 1px 10px rgba(0, 0, 0, 0.2)' }}
-          >
+          <p className="text-[17px] sm:text-[19px] text-[#475569] font-medium max-w-2xl mx-auto leading-relaxed">
             While others charge 20–35% commission on every WhatsApp conversation, we connect you directly to Meta with zero markup fees.
           </p>
 
           {/* Monthly / Yearly Toggle Pill */}
           <div className="pt-4 flex items-center justify-center">
-            <div className="p-1.5 bg-white/20 backdrop-blur-md border border-white/30 rounded-full inline-flex items-center gap-2 shadow-lg">
+            <div className="p-1.5 bg-[#F1F5F9] border border-[#E2E8F0] rounded-full inline-flex items-center gap-2 shadow-sm">
               <button
                 type="button"
                 onClick={() => setIsYearly(false)}
                 className={`px-6 py-2.5 rounded-full text-[14px] font-bold transition-all ${
                   !isYearly 
-                    ? 'bg-[#0B1220] text-white shadow-md' 
-                    : 'text-white hover:text-white/80'
+                    ? 'bg-[#0B1220] text-white shadow-sm' 
+                    : 'text-[#475569] hover:text-[#0B1220]'
                 }`}
               >
                 Monthly Billing
@@ -74,8 +68,8 @@ export default function PricingPage() {
                 onClick={() => setIsYearly(true)}
                 className={`px-6 py-2.5 rounded-full text-[14px] font-bold transition-all flex items-center gap-2 ${
                   isYearly 
-                    ? 'bg-[#0B1220] text-white shadow-md' 
-                    : 'text-white hover:text-white/80'
+                    ? 'bg-[#0B1220] text-white shadow-sm' 
+                    : 'text-[#475569] hover:text-[#0B1220]'
                 }`}
               >
                 <span>Annual Billing</span>
@@ -209,7 +203,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* 3. Platform Feature Matrix Tabbed Panel (Dark Slate) */}
+      {/* 3. Platform Feature Matrix Tabbed Panel */}
       <section className="section-major bg-[#0B1220] text-white border-b border-[#1E293B]">
         <div className="container-xl">
           <div className="text-center max-w-3xl mx-auto mb-12">

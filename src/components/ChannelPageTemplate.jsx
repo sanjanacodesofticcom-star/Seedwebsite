@@ -40,7 +40,7 @@ const ICON_MAP = {
 };
 
 export default function ChannelPageTemplate({
-  channelKey, // 'whatsapp' | 'facebook' | 'instagram'
+  channelKey,
   accentColor,
   accentWarmColor,
   heroPill,
@@ -64,33 +64,27 @@ export default function ChannelPageTemplate({
 
   return (
     <div className="bg-white">
-      {/* 1. Hero Section */}
-      <section className="sky-hero-bg pt-12 pb-20 sm:pb-28 text-white relative">
+      {/* 1. Brand Hero Section */}
+      <section className="brand-hero-bg pt-12 pb-20 sm:pb-28 text-[#0B1220] relative">
         <div className="container-xl relative z-10 text-center max-w-4xl mx-auto space-y-6">
           
           {/* Eyebrow Pill */}
           <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B1220]/80 backdrop-blur-md border border-white/20 text-white shadow-md">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-[#E2E8F0] text-[#0B1220] shadow-sm">
               <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: accentColor }} />
-              <span className="text-[12.5px] font-mono font-bold tracking-wide uppercase text-white">
+              <span className="text-[12.5px] font-mono font-bold tracking-wide uppercase text-[#0B1220]">
                 {heroPill}
               </span>
             </div>
           </div>
 
           {/* H1 */}
-          <h1 
-            className="text-[38px] sm:text-[54px] lg:text-[62px] font-extrabold text-white tracking-tight leading-[1.08]"
-            style={{ textShadow: '0 2px 20px rgba(0, 0, 0, 0.25)' }}
-          >
+          <h1 className="text-[38px] sm:text-[54px] lg:text-[62px] font-extrabold text-[#0B1220] tracking-tight leading-[1.08]">
             {heroTitle}
           </h1>
 
           {/* Subhead */}
-          <p 
-            className="text-[17px] sm:text-[19px] text-white font-medium max-w-2xl mx-auto leading-relaxed"
-            style={{ textShadow: '0 1px 10px rgba(0, 0, 0, 0.2)' }}
-          >
+          <p className="text-[17px] sm:text-[19px] text-[#475569] font-medium max-w-2xl mx-auto leading-relaxed">
             {heroSubhead}
           </p>
 
@@ -100,7 +94,7 @@ export default function ChannelPageTemplate({
               href="https://chat.getaseed.com/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-lime text-[15px] shadow-xl"
+              className="btn-lime text-[15px] shadow-md font-bold"
             >
               <span>START FREE ON {channelKey.toUpperCase()}</span>
               <span className="arrow-circle-dark">↗</span>
@@ -110,14 +104,14 @@ export default function ChannelPageTemplate({
               href="https://cal.com/codesoftic"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glass shadow-lg font-bold"
+              className="btn-secondary-brand shadow-sm font-bold"
             >
               <span>SCHEDULE 1-ON-1 DEMO</span>
             </a>
           </div>
 
           {/* Trust line */}
-          <div className="pt-2 flex items-center justify-center gap-6 text-[13.5px] text-white font-semibold font-mono">
+          <div className="pt-2 flex items-center justify-center gap-6 text-[13.5px] text-[#64748B] font-semibold font-mono">
             <span>🎁 7 Days Free Onboarding</span>
             <span>·</span>
             <span>💸 30 Days Money-Back Guarantee</span>

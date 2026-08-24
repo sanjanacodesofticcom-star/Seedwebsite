@@ -64,29 +64,23 @@ export default function ContactPage() {
 
   return (
     <div className="bg-white">
-      {/* 1. Sky Atmosphere Hero */}
-      <section className="sky-hero-bg pt-12 pb-20 sm:pb-28 text-white relative">
+      {/* 1. Brand Hero */}
+      <section className="brand-hero-bg pt-12 pb-20 sm:pb-28 text-[#0B1220] relative">
         <div className="container-xl max-w-4xl mx-auto space-y-6 text-center relative z-10">
           <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B1220]/80 backdrop-blur-md border border-white/20 text-white shadow-md">
-              <Mail size={14} className="text-[#ABEF06]" />
-              <span className="text-[12.5px] font-mono font-bold tracking-wide uppercase text-white">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-sm text-[#0B1220]">
+              <Mail size={14} className="text-[#1877F2]" />
+              <span className="text-[12.5px] font-mono font-bold tracking-wide uppercase text-[#0B1220]">
                 Get in Touch
               </span>
             </div>
           </div>
 
-          <h1 
-            className="text-[38px] sm:text-[54px] lg:text-[62px] font-extrabold text-white tracking-tight leading-[1.08]"
-            style={{ textShadow: '0 2px 20px rgba(0, 0, 0, 0.25)' }}
-          >
+          <h1 className="text-[38px] sm:text-[54px] lg:text-[62px] font-extrabold text-[#0B1220] tracking-tight leading-[1.08]">
             We're here to help you scale
           </h1>
 
-          <p 
-            className="text-[17px] sm:text-[19px] text-white font-medium max-w-2xl mx-auto leading-relaxed"
-            style={{ textShadow: '0 1px 10px rgba(0, 0, 0, 0.2)' }}
-          >
+          <p className="text-[17px] sm:text-[19px] text-[#475569] font-medium max-w-2xl mx-auto leading-relaxed">
             Have questions about automation, lead generation, or custom Meta integrations? Our team is ready to help you grow.
           </p>
         </div>
