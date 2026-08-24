@@ -150,12 +150,12 @@ export default function AboutPage() {
               href="https://chat.getaseed.com/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-lime px-8 py-3.5 text-[15px] font-bold"
+              className="btn-lime px-8 py-3.5 text-[15px] font-bold shadow-md"
             >
               <span>Get Started Free</span>
               <span className="arrow-circle-dark">↗</span>
             </a>
-            <Link href="/contact" className="btn-dark-brand px-7 py-3.5 text-[14.5px]">
+            <Link href="/contact" className="btn-lime px-8 py-3.5 text-[15px] font-bold shadow-md">
               <span>Contact Sales</span>
             </Link>
           </div>

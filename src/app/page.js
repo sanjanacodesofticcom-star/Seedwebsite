@@ -18,16 +18,16 @@ export const metadata = {
 export default function HomePage() {
   return (
     <div className="bg-white">
-      {/* 1. Reference UI Hero Section (Panoramic Sky, 3D Curved Fan Array, Dual CTAs, Rating Strip) */}
+      {/* 1. Brand Hero Section */}
       <HeroReferenceSection />
 
       {/* 2. Partner Logo Marquee */}
       <SocialProofMarquee />
 
-      {/* 3. Reference UI Bento Grid (About Us: 120+ Photo Card, 100% Quote, 520k+ Lime Box, 20+ Dark Box) */}
+      {/* 3. Bento Grid */}
       <BentoReferenceSection />
 
-      {/* 4. Reference UI Services & Innovation Grid (3 Channel Cards + 1 Team Photo Card) */}
+      {/* 4. Services Grid */}
       <ServicesReferenceGrid />
 
       {/* 5. Interactive Dark AI Data Training Console */}
@@ -57,7 +57,7 @@ export default function HomePage() {
                   href="https://chat.getaseed.com/register"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-lime text-[14px]"
+                  className="btn-lime text-[14.5px] font-bold shadow-md"
                 >
                   <span>START FREE TRIAL</span>
                   <span className="arrow-circle-dark">↗</span>
@@ -118,7 +118,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. Our Promise to You (Earned Numbering in Mono) */}
+      {/* 7. Our Promise to You */}
       <section className="section-major bg-white border-b border-[#E2E8F0]">
         <div className="container-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -152,7 +152,6 @@ export default function HomePage() {
             {/* Right Column: 5 Sequential Promises */}
             <div className="lg:col-span-7 space-y-6">
               <div className="space-y-6 divide-y divide-[#E2E8F0]">
-                {/* Promise 1 */}
                 <div className="pt-6 first:pt-0 flex items-start gap-5">
                   <span className="stat-mono text-[28px] font-bold text-[#94A3B8] flex-shrink-0">
                     01
@@ -167,7 +166,6 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Promise 2 */}
                 <div className="pt-6 flex items-start gap-5">
                   <span className="stat-mono text-[28px] font-bold text-[#94A3B8] flex-shrink-0">
                     02
@@ -182,7 +180,6 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Promise 3 */}
                 <div className="pt-6 flex items-start gap-5">
                   <span className="stat-mono text-[28px] font-bold text-[#94A3B8] flex-shrink-0">
                     03
@@ -197,7 +194,6 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Promise 4 */}
                 <div className="pt-6 flex items-start gap-5">
                   <span className="stat-mono text-[28px] font-bold text-[#94A3B8] flex-shrink-0">
                     04
@@ -212,7 +208,6 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Promise 5 */}
                 <div className="pt-6 flex items-start gap-5">
                   <span className="stat-mono text-[28px] font-bold text-[#94A3B8] flex-shrink-0">
                     05
@@ -273,7 +268,7 @@ export default function HomePage() {
                   href="https://chat.getaseed.com/register"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#101B33] hover:bg-[#1E293B] text-white border border-[#1E293B] font-semibold text-[15px] w-full sm:w-auto transition-colors"
+                  className="btn-lime px-8 py-3.5 text-[15px] font-bold w-full sm:w-auto shadow-lg"
                 >
                   <span>Create Account</span>
                   <ArrowRight size={15} />

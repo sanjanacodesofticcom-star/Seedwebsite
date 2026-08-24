@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* GetAseed Design System - Strictly Official Brand Colors */
+/* GetAseed Design System - Strictly Official Brand Colors with #ABEF06 CTAs */
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
 :root {
@@ -18,7 +18,7 @@
   --brand-line: #E2E8F0;
   --brand-line-dark: #1E293B;
 
-  /* Official GetAseed Logo Accent */
+  /* Official GetAseed Logo Accent (Strictly Used for All CTAs and Buttons) */
   --brand-lime: #ABEF06;
   --brand-lime-hover: #C8F932;
   --brand-lime-active: #91D000;
@@ -47,7 +47,7 @@
 
   /* Elevation */
   --shadow-card: 0 10px 30px -10px rgba(11, 18, 32, 0.06);
-  --shadow-glow-lime: 0 8px 24px -6px rgba(171, 239, 6, 0.4);
+  --shadow-glow-lime: 0 8px 24px -6px rgba(171, 239, 6, 0.45);
 }
 
 /* Base Setup */
@@ -157,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 25px 50px -12px rgba(11, 18, 32, 0.2) !important;
 }
 
-/* Brand Hero Atmosphere: Clean Paper with Brand Luminous Mesh */
+/* Brand Hero Atmosphere */
 .brand-hero-bg {
   background-color: #FFFFFF;
   background-image: 
@@ -179,14 +179,18 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
-/* Official Electric Lime Button */
-.btn-lime {
-  background-color: var(--brand-lime);
-  color: var(--brand-ink);
+/* ─────────────────────────────────────────────────────────────
+   STRICT BRAND COLOR (#ABEF06) BUTTONS AND CTAS
+   ───────────────────────────────────────────────────────────── */
+.btn-lime,
+.btn-primary,
+.btn-pill {
+  background-color: var(--brand-lime) !important;
+  color: var(--brand-ink) !important;
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 14.5px;
-  padding: 10px 22px;
+  padding: 11px 24px;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
@@ -194,19 +198,30 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--shadow-glow-lime);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
 }
 
-.btn-lime:hover {
-  background-color: var(--brand-lime-hover);
+.btn-lime:hover,
+.btn-primary:hover,
+.btn-pill:hover {
+  background-color: var(--brand-lime-hover) !important;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(171, 239, 6, 0.55);
+  box-shadow: 0 12px 28px -6px rgba(171, 239, 6, 0.65);
 }
 
-/* Secondary Button */
-.btn-secondary-brand {
-  background: #FFFFFF;
-  border: 1.5px solid var(--brand-line);
+.btn-lime:active,
+.btn-primary:active,
+.btn-pill:active {
+  background-color: var(--brand-lime-active) !important;
+  transform: translateY(0);
+}
+
+/* Secondary CTA with Brand Lime Border & Accent */
+.btn-secondary-brand,
+.btn-secondary {
+  background-color: #FFFFFF;
+  border: 2px solid var(--brand-lime);
   color: var(--brand-ink);
   font-family: var(--font-body);
   font-weight: 700;
@@ -218,37 +233,16 @@ h1, h2, h3, h4, h5, h6 {
   gap: 8px;
   text-decoration: none;
   transition: all 180ms ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(171, 239, 6, 0.2);
+  cursor: pointer;
 }
 
-.btn-secondary-brand:hover {
-  background: #F8FAFC;
-  border-color: #CBD5E1;
+.btn-secondary-brand:hover,
+.btn-secondary:hover {
+  background-color: var(--brand-lime);
+  color: var(--brand-ink);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-}
-
-/* Dark Primary Button */
-.btn-dark-brand {
-  background: var(--brand-ink);
-  color: #FFFFFF;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 14.5px;
-  padding: 10px 24px;
-  border-radius: var(--radius-pill);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  transition: all 180ms ease;
-  box-shadow: 0 4px 14px rgba(11, 18, 32, 0.15);
-}
-
-.btn-dark-brand:hover {
-  background: #1E293B;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(11, 18, 32, 0.25);
+  box-shadow: 0 8px 20px -4px rgba(171, 239, 6, 0.5);
 }
 
 /* Arrow Badges */
@@ -313,8 +307,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .input-clean:focus {
-  border-color: var(--brand-fb);
-  box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.15);
+  border-color: var(--brand-lime);
+  box-shadow: 0 0 0 3px rgba(171, 239, 6, 0.3);
 }
 
 /* Reduced Motion Override */

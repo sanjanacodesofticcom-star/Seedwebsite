@@ -49,15 +49,15 @@ export default function ServicesReferenceGrid() {
             we help you move faster with confidence.
           </p>
 
-          {/* Centered Dark Get Started ↗ Pill Button */}
+          {/* Centered Brand Lime #ABEF06 Get Started ↗ Pill Button */}
           <a
             href="https://chat.getaseed.com/register"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#0B1220] text-white hover:bg-[#1E293B] font-bold text-[15px] transition-all shadow-lg hover:-translate-y-0.5"
+            className="btn-lime text-[15px] font-bold shadow-md inline-flex items-center gap-3 px-8 py-3.5"
           >
             <span>GET STARTED</span>
-            <span className="arrow-circle-lime">↗</span>
+            <span className="arrow-circle-dark">↗</span>
           </a>
         </div>
 
@@ -101,7 +101,7 @@ export default function ServicesReferenceGrid() {
             );
           })}
 
-          {/* 4th Card: High-Quality Photo Card of Professional Leader with Laptop */}
+          {/* 4th Card: High-Quality Photo Card */}
           <div className="rounded-[26px] overflow-hidden relative min-h-[320px] border border-[#E2E8F0] shadow-md flex flex-col justify-end p-6 bg-[#0B1220] group">
             <Image
               src="/images/avatars/avatar-4.jpg"

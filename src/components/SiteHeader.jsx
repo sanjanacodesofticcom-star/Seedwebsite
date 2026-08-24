@@ -79,7 +79,7 @@ export default function SiteHeader() {
         className="sticky top-0 z-50 transition-all duration-200"
         style={{
           height: 'var(--header-height)',
-          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.88)',
+          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.92)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           borderBottom: '1px solid #E2E8F0',
@@ -233,7 +233,7 @@ export default function SiteHeader() {
             </Link>
           </nav>
 
-          {/* Desktop Right CTA: Electric Lime Button */}
+          {/* Desktop Right CTA: Brand Lime #ABEF06 Button */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/contact"
@@ -327,11 +327,11 @@ export default function SiteHeader() {
               </Link>
             </div>
 
-            {/* Bottom Actions */}
+            {/* Bottom Actions: All Brand Lime #ABEF06 CTAs */}
             <div className="pt-6 border-t border-[#E2E8F0] space-y-3">
               <Link
                 href="/contact"
-                className="btn-lime w-full justify-center text-[14px]"
+                className="btn-lime w-full justify-center text-[14px] font-bold"
               >
                 <span>CONTACT US</span>
               </Link>
@@ -340,9 +340,10 @@ export default function SiteHeader() {
                 href="https://chat.getaseed.com/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full bg-[#0B1220] text-white font-bold text-[14px]"
+                className="btn-lime w-full justify-center text-[14px] font-bold"
               >
-                <span>GET STARTED ↗</span>
+                <span>GET STARTED</span>
+                <span className="arrow-circle-dark">↗</span>
               </a>
             </div>
           </div>
