@@ -21,7 +21,6 @@ const channels = [
     href: '/whatsapp',
     badge: 'Official Cloud API',
     description: 'Transform communication with verified profiles, catalogs, and smart broadcasts.',
-    chipClass: 'channel-chip-wa',
     color: '#25D366',
     icon: MessageSquare
   },
@@ -30,7 +29,6 @@ const channels = [
     href: '/facebook',
     badge: 'Meta Partner',
     description: 'Messenger automation, Click-to-Messenger ad funnels, and comment growth tools.',
-    chipClass: 'channel-chip-fb',
     color: '#1877F2',
     icon: Share2
   },
@@ -39,7 +37,6 @@ const channels = [
     href: '/instagram',
     badge: 'Graph API',
     description: 'Answer FAQs, auto-reply to story replies, and convert post comments to sales.',
-    chipClass: 'channel-chip-ig',
     color: '#962FBF',
     icon: Send
   }
@@ -52,9 +49,11 @@ export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  const isSkyHeroPage = pathname === '/';
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 4);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -85,10 +84,15 @@ export default function SiteHeader() {
         className="sticky top-0 z-50 transition-all duration-200"
         style={{
           height: 'var(--header-height)',
-          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.94)' : 'var(--paper)',
-          backdropFilter: isScrolled ? 'blur(12px)' : 'none',
-          borderBottom: '1px solid var(--line)',
-          boxShadow: isScrolled ? '0 4px 20px -4px rgba(11, 18, 32, 0.06)' : 'none'
+          backgroundColor: isScrolled 
+            ? 'rgba(255, 255, 255, 0.95)' 
+            : isSkyHeroPage 
+              ? 'rgba(255, 255, 255, 0.15)' 
+              : 'var(--paper)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderBottom: isScrolled ? '1px solid #E2E8F0' : '1px solid rgba(255, 255, 255, 0.25)',
+          boxShadow: isScrolled ? '0 4px 20px -4px rgba(11, 18, 32, 0.08)' : 'none'
         }}
       >
         <div className="container-xl h-full flex items-center justify-between">
@@ -102,11 +106,13 @@ export default function SiteHeader() {
             {/* Home Link */}
             <Link 
               href="/" 
-              className={`text-[15px] font-medium transition-colors py-1 relative ${
-                pathname === '/' ? 'text-[#0B1220] font-semibold' : 'text-[#4A5468] hover:text-[#0B1220]'
+              className={`text-[15px] font-semibold transition-colors py-1 relative ${
+                pathname === '/' 
+                  ? 'text-[#0B1220] font-bold' 
+                  : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
               }`}
             >
-              Home
+              HOME
               {pathname === '/' && (
                 <span 
                   className="absolute bottom-[-10px] left-0 right-0 h-[2px] rounded-full" 
@@ -115,22 +121,24 @@ export default function SiteHeader() {
               )}
             </Link>
 
-            {/* Channels Mega Dropdown */}
+            {/* Channels Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
                 type="button"
                 onClick={() => setChannelsOpen(!channelsOpen)}
                 onMouseEnter={() => setChannelsOpen(true)}
-                className={`flex items-center gap-1.5 text-[15px] font-medium transition-colors py-1 relative cursor-pointer ${
-                  isChannelActive ? 'text-[#0B1220] font-semibold' : 'text-[#4A5468] hover:text-[#0B1220]'
+                className={`flex items-center gap-1.5 text-[15px] font-semibold transition-colors py-1 relative cursor-pointer ${
+                  isChannelActive 
+                    ? 'text-[#0B1220] font-bold' 
+                    : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
                 }`}
                 aria-expanded={channelsOpen}
                 aria-haspopup="true"
               >
-                <span>Channels</span>
+                <span>CHANNELS</span>
                 <ChevronDown 
                   size={15} 
-                  className={`transition-transform duration-200 ${channelsOpen ? 'rotate-180 text-[#0B1220]' : 'text-[#8891A3]'}`} 
+                  className={`transition-transform duration-200 ${channelsOpen ? 'rotate-180' : ''}`} 
                 />
                 {isChannelActive && (
                   <span 
@@ -144,10 +152,9 @@ export default function SiteHeader() {
               {channelsOpen && (
                 <div 
                   onMouseLeave={() => setChannelsOpen(false)}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white rounded-[16px] border border-[#E7E9F0] p-2.5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.14)] animate-in fade-in slide-in-from-top-2 duration-150 z-50"
-                  style={{ borderRadius: 'var(--radius-card)' }}
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white rounded-[20px] border border-[#E2E8F0] p-3 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-150 z-50 text-[#0B1220]"
                 >
-                  <div className="px-3 py-2 border-b border-[#E7E9F0] mb-1">
+                  <div className="px-3 py-2 border-b border-[#E2E8F0] mb-1">
                     <span className="caption-eyebrow text-[#8891A3] text-[11px]">Omnichannel Platforms</span>
                   </div>
                   <div className="flex flex-col gap-1">
@@ -159,14 +166,14 @@ export default function SiteHeader() {
                           key={ch.name}
                           href={ch.href}
                           onClick={() => setChannelsOpen(false)}
-                          className={`flex items-start gap-3 p-3 rounded-[12px] transition-all group ${
-                            active ? 'bg-[#F6F7FB]' : 'hover:bg-[#F6F7FB]'
+                          className={`flex items-start gap-3 p-3 rounded-[14px] transition-all group ${
+                            active ? 'bg-[#F8FAFC]' : 'hover:bg-[#F8FAFC]'
                           }`}
                         >
                           <div 
                             className="w-9 h-9 rounded-[10px] flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105"
                             style={{ 
-                              backgroundColor: `${ch.color}15`,
+                              backgroundColor: `${ch.color}18`,
                               color: ch.color 
                             }}
                           >
@@ -174,17 +181,17 @@ export default function SiteHeader() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between">
-                              <span className="text-[14px] font-semibold text-[#0B1220] group-hover:text-[#2A3FE0] transition-colors">
+                              <span className="text-[14px] font-bold text-[#0B1220] group-hover:text-[#1877F2] transition-colors">
                                 {ch.name}
                               </span>
                               <span 
-                                className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full"
+                                className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full"
                                 style={{ backgroundColor: `${ch.color}15`, color: ch.color }}
                               >
                                 {ch.badge}
                               </span>
                             </div>
-                            <p className="text-[12px] text-[#4A5468] line-clamp-2 mt-0.5 leading-relaxed">
+                            <p className="text-[12px] text-[#64748B] line-clamp-2 mt-0.5 leading-relaxed">
                               {ch.description}
                             </p>
                           </div>
@@ -199,11 +206,13 @@ export default function SiteHeader() {
             {/* Pricing */}
             <Link 
               href="/pricing" 
-              className={`text-[15px] font-medium transition-colors py-1 relative ${
-                pathname === '/pricing' ? 'text-[#0B1220] font-semibold' : 'text-[#4A5468] hover:text-[#0B1220]'
+              className={`text-[15px] font-semibold transition-colors py-1 relative ${
+                pathname === '/pricing' 
+                  ? 'text-[#0B1220] font-bold' 
+                  : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
               }`}
             >
-              Pricing
+              PRICING
               {pathname === '/pricing' && (
                 <span 
                   className="absolute bottom-[-10px] left-0 right-0 h-[2px] rounded-full" 
@@ -215,11 +224,13 @@ export default function SiteHeader() {
             {/* About Us */}
             <Link 
               href="/about-us" 
-              className={`text-[15px] font-medium transition-colors py-1 relative ${
-                pathname === '/about-us' ? 'text-[#0B1220] font-semibold' : 'text-[#4A5468] hover:text-[#0B1220]'
+              className={`text-[15px] font-semibold transition-colors py-1 relative ${
+                pathname === '/about-us' 
+                  ? 'text-[#0B1220] font-bold' 
+                  : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
               }`}
             >
-              About
+              ABOUT US
               {pathname === '/about-us' && (
                 <span 
                   className="absolute bottom-[-10px] left-0 right-0 h-[2px] rounded-full" 
@@ -231,11 +242,13 @@ export default function SiteHeader() {
             {/* Contact */}
             <Link 
               href="/contact" 
-              className={`text-[15px] font-medium transition-colors py-1 relative ${
-                pathname === '/contact' ? 'text-[#0B1220] font-semibold' : 'text-[#4A5468] hover:text-[#0B1220]'
+              className={`text-[15px] font-semibold transition-colors py-1 relative ${
+                pathname === '/contact' 
+                  ? 'text-[#0B1220] font-bold' 
+                  : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
               }`}
             >
-              Contact
+              CONTACT
               {pathname === '/contact' && (
                 <span 
                   className="absolute bottom-[-10px] left-0 right-0 h-[2px] rounded-full" 
@@ -245,17 +258,14 @@ export default function SiteHeader() {
             </Link>
           </nav>
 
-          {/* Desktop Right CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a 
-              href="https://chat.getaseed.com/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-pill btn-primary text-[14px] px-5 py-2.5 shadow-sm hover:shadow"
+          {/* Desktop Right CTA: Electric Lime Button */}
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/contact"
+              className="btn-lime text-[13.5px] uppercase tracking-wider font-extrabold"
             >
-              <span>Create Account</span>
-              <ArrowRight size={15} />
-            </a>
+              <span>CONTACT US</span>
+            </Link>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -263,7 +273,7 @@ export default function SiteHeader() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-[12px] text-[#0B1220] hover:bg-[#F6F7FB] border border-[#E7E9F0] transition-colors"
+              className="p-2.5 rounded-[12px] text-[#0B1220] bg-white/80 hover:bg-white border border-[#E2E8F0] transition-colors"
               aria-label="Toggle mobile navigation menu"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -279,96 +289,90 @@ export default function SiteHeader() {
           onClick={() => setMobileMenuOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-[380px] h-[calc(100vh-80px)] ml-auto p-6 flex flex-col justify-between overflow-y-auto border-l border-[#E7E9F0] shadow-2xl"
+            className="bg-white w-full max-w-[380px] h-[calc(100vh-80px)] ml-auto p-6 flex flex-col justify-between overflow-y-auto border-l border-[#E2E8F0] shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <Link
-                  href="/"
-                  className={`block px-4 py-3 rounded-[12px] font-medium text-[16px] ${
-                    pathname === '/' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F6F7FB]'
-                  }`}
-                >
-                  Home
-                </Link>
+            <div className="space-y-4">
+              <Link
+                href="/"
+                className={`block px-4 py-3 rounded-[14px] font-bold text-[15px] ${
+                  pathname === '/' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F8FAFC]'
+                }`}
+              >
+                Home
+              </Link>
 
-                <div className="pt-2 pb-1 px-4">
-                  <span className="caption-eyebrow text-[#8891A3] text-[11px]">Channels</span>
-                </div>
-
-                <div className="space-y-1 pl-2">
-                  {channels.map((ch) => {
-                    const Icon = ch.icon;
-                    return (
-                      <Link
-                        key={ch.name}
-                        href={ch.href}
-                        className={`flex items-center gap-3 px-4 py-2.5 rounded-[12px] text-[15px] font-medium ${
-                          pathname === ch.href ? 'bg-[#F6F7FB] text-[#0B1220] font-semibold' : 'text-[#4A5468] hover:bg-[#F6F7FB]'
-                        }`}
-                      >
-                        <div 
-                          className="w-7 h-7 rounded-[8px] flex items-center justify-center"
-                          style={{ backgroundColor: `${ch.color}15`, color: ch.color }}
-                        >
-                          <Icon size={15} />
-                        </div>
-                        <span>{ch.name}</span>
-                      </Link>
-                    );
-                  })}
-                </div>
-
-                <Link
-                  href="/pricing"
-                  className={`block px-4 py-3 rounded-[12px] font-medium text-[16px] ${
-                    pathname === '/pricing' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F6F7FB]'
-                  }`}
-                >
-                  Pricing
-                </Link>
-
-                <Link
-                  href="/about-us"
-                  className={`block px-4 py-3 rounded-[12px] font-medium text-[16px] ${
-                    pathname === '/about-us' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F6F7FB]'
-                  }`}
-                >
-                  About Us
-                </Link>
-
-                <Link
-                  href="/contact"
-                  className={`block px-4 py-3 rounded-[12px] font-medium text-[16px] ${
-                    pathname === '/contact' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F6F7FB]'
-                  }`}
-                >
-                  Contact
-                </Link>
+              <div className="pt-2 pb-1 px-4">
+                <span className="caption-eyebrow text-[#8891A3] text-[11px]">Channels</span>
               </div>
+
+              <div className="space-y-1 pl-2">
+                {channels.map((ch) => {
+                  const Icon = ch.icon;
+                  return (
+                    <Link
+                      key={ch.name}
+                      href={ch.href}
+                      className={`flex items-center gap-3 px-4 py-2.5 rounded-[12px] text-[14.5px] font-semibold ${
+                        pathname === ch.href ? 'bg-[#F8FAFC] text-[#0B1220]' : 'text-[#475569] hover:bg-[#F8FAFC]'
+                      }`}
+                    >
+                      <div 
+                        className="w-7 h-7 rounded-[8px] flex items-center justify-center"
+                        style={{ backgroundColor: `${ch.color}15`, color: ch.color }}
+                      >
+                        <Icon size={15} />
+                      </div>
+                      <span>{ch.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              <Link
+                href="/pricing"
+                className={`block px-4 py-3 rounded-[14px] font-bold text-[15px] ${
+                  pathname === '/pricing' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F8FAFC]'
+                }`}
+              >
+                Pricing
+              </Link>
+
+              <Link
+                href="/about-us"
+                className={`block px-4 py-3 rounded-[14px] font-bold text-[15px] ${
+                  pathname === '/about-us' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F8FAFC]'
+                }`}
+              >
+                About Us
+              </Link>
+
+              <Link
+                href="/contact"
+                className={`block px-4 py-3 rounded-[14px] font-bold text-[15px] ${
+                  pathname === '/contact' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F8FAFC]'
+                }`}
+              >
+                Contact
+              </Link>
             </div>
 
             {/* Bottom Actions */}
-            <div className="pt-6 border-t border-[#E7E9F0] space-y-3">
-              <a
-                href="https://wa.me/919999061692"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-pill btn-wa w-full justify-center text-[14px]"
+            <div className="pt-6 border-t border-[#E2E8F0] space-y-3">
+              <Link
+                href="/contact"
+                className="btn-lime w-full justify-center text-[14px]"
               >
-                <MessageSquare size={16} />
-                <span>Chat on WhatsApp</span>
-              </a>
+                <span>CONTACT US</span>
+              </Link>
 
               <a
                 href="https://chat.getaseed.com/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-pill btn-primary w-full justify-center text-[14px]"
+                className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full bg-[#0B1220] text-white font-bold text-[14px]"
               >
-                <span>Create Account</span>
-                <ArrowRight size={15} />
+                <span>GET STARTED ↗</span>
               </a>
             </div>
           </div>
