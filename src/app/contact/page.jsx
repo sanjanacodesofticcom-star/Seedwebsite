@@ -11,6 +11,7 @@ import {
   Sparkles,
   ExternalLink
 } from 'lucide-react';
+import { WhatsAppBrandIcon, InstagramBrandIcon, FacebookBrandIcon } from '@/components/BrandIcons';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -63,41 +64,52 @@ export default function ContactPage() {
 
   return (
     <div className="bg-white">
-      {/* Header */}
-      <section className="section-major bg-[#FFFFFF] border-b border-[#E7E9F0]">
+      {/* 1. Sky Atmosphere Hero */}
+      <section className="sky-hero-bg pt-12 pb-20 sm:pb-28 text-white relative">
+        <div className="container-xl max-w-4xl mx-auto space-y-6 text-center relative z-10">
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B1220]/80 backdrop-blur-md border border-white/20 text-white shadow-md">
+              <Mail size={14} className="text-[#ABEF06]" />
+              <span className="text-[12.5px] font-mono font-bold tracking-wide uppercase text-white">
+                Get in Touch
+              </span>
+            </div>
+          </div>
+
+          <h1 
+            className="text-[38px] sm:text-[54px] lg:text-[62px] font-extrabold text-white tracking-tight leading-[1.08]"
+            style={{ textShadow: '0 2px 20px rgba(0, 0, 0, 0.25)' }}
+          >
+            We're here to help you scale
+          </h1>
+
+          <p 
+            className="text-[17px] sm:text-[19px] text-white font-medium max-w-2xl mx-auto leading-relaxed"
+            style={{ textShadow: '0 1px 10px rgba(0, 0, 0, 0.2)' }}
+          >
+            Have questions about automation, lead generation, or custom Meta integrations? Our team is ready to help you grow.
+          </p>
+        </div>
+      </section>
+
+      {/* 2. Contact Content & Form */}
+      <section className="section-major bg-white border-b border-[#E2E8F0]">
         <div className="container-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            
             {/* Left Column: Direct Info & Booking Link Card */}
             <div className="lg:col-span-5 space-y-8">
-              <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 pill-eyebrow">
-                  <Mail size={13} className="text-[#1877F2]" />
-                  <span>Get in Touch</span>
-                </div>
-
-                <h1 
-                  className="display-l text-[#0B1220] tracking-tight"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
-                  Contact Us
-                </h1>
-
-                <p className="body-l text-[#4A5468] leading-relaxed">
-                  Have questions about automation, lead generation, or marketing integrations? Our team is ready to help you grow — fast.
-                </p>
-              </div>
-
               {/* Booking Card */}
-              <div className="p-6 rounded-[16px] bg-[#F6F7FB] border border-[#E7E9F0] space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-[12px] bg-[#0B1220] text-white flex items-center justify-center">
-                    <Calendar size={18} />
+              <div className="p-7 rounded-[24px] bg-[#F8FAFC] border border-[#E2E8F0] space-y-5 shadow-sm">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-12 h-12 rounded-[14px] bg-[#0B1220] text-white flex items-center justify-center shadow-md">
+                    <Calendar size={22} className="text-[#ABEF06]" />
                   </div>
                   <div>
-                    <h3 className="text-[16px] font-semibold text-[#0B1220]">
+                    <h3 className="text-[17px] font-bold text-[#0B1220]">
                       Schedule a Live Strategy Call
                     </h3>
-                    <p className="text-[13px] text-[#4A5468]">
+                    <p className="text-[13.5px] text-[#475569] font-medium">
                       15-minute 1-on-1 walkthrough with an automation architect.
                     </p>
                   </div>
@@ -107,54 +119,54 @@ export default function ContactPage() {
                   href="https://cal.com/codesoftic"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-pill btn-primary w-full justify-center text-[14px]"
+                  className="btn-lime w-full justify-center text-[14px] shadow-sm font-bold"
                 >
                   <span>Book Meeting on Cal.com</span>
-                  <ExternalLink size={14} />
+                  <ExternalLink size={15} />
                 </a>
               </div>
 
               {/* Direct Info List */}
               <div className="space-y-4 pt-2">
-                <div className="flex items-start gap-3 text-[14.5px] text-[#4A5468]">
-                  <div className="w-8 h-8 rounded-full bg-[#25D366]/10 text-[#25D366] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <MessageSquare size={16} />
+                <div className="flex items-start gap-3.5 p-4 rounded-[16px] bg-[#F8FAFC] border border-[#E2E8F0]">
+                  <div className="shrink-0 mt-0.5">
+                    <WhatsAppBrandIcon size={28} />
                   </div>
                   <div>
-                    <div className="font-semibold text-[#0B1220]">WhatsApp Support</div>
+                    <div className="font-bold text-[#0B1220] text-[15px]">WhatsApp Support</div>
                     <a 
                       href="https://wa.me/919999061692" 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-[#25D366] font-mono hover:underline text-[13.5px]"
+                      className="text-[#25D366] font-mono font-bold hover:underline text-[14px]"
                     >
                       +91 99990 61692 (Fast 24/7 Response)
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 text-[14.5px] text-[#4A5468]">
-                  <div className="w-8 h-8 rounded-full bg-[#1877F2]/10 text-[#1877F2] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Mail size={16} />
+                <div className="flex items-start gap-3.5 p-4 rounded-[16px] bg-[#F8FAFC] border border-[#E2E8F0]">
+                  <div className="w-9 h-9 rounded-full bg-[#1877F2]/10 text-[#1877F2] flex items-center justify-center shrink-0 mt-0.5">
+                    <Mail size={18} />
                   </div>
                   <div>
-                    <div className="font-semibold text-[#0B1220]">Official Email</div>
+                    <div className="font-bold text-[#0B1220] text-[15px]">Official Email</div>
                     <a 
                       href="mailto:online@getaseed.com" 
-                      className="text-[#1877F2] font-mono hover:underline text-[13.5px]"
+                      className="text-[#1877F2] font-mono font-bold hover:underline text-[14px]"
                     >
                       online@getaseed.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 text-[14.5px] text-[#4A5468]">
-                  <div className="w-8 h-8 rounded-full bg-[#962FBF]/10 text-[#962FBF] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <MapPin size={16} />
+                <div className="flex items-start gap-3.5 p-4 rounded-[16px] bg-[#F8FAFC] border border-[#E2E8F0]">
+                  <div className="w-9 h-9 rounded-full bg-[#962FBF]/10 text-[#962FBF] flex items-center justify-center shrink-0 mt-0.5">
+                    <MapPin size={18} />
                   </div>
                   <div>
-                    <div className="font-semibold text-[#0B1220]">Office Address</div>
-                    <div className="text-[13.5px] text-[#4A5468]">
+                    <div className="font-bold text-[#0B1220] text-[15px]">Office Address</div>
+                    <div className="text-[13.5px] text-[#475569] font-medium">
                       A-306, Bestech Business Towers, Mohali, Punjab, India 🇮🇳
                     </div>
                   </div>
@@ -164,37 +176,34 @@ export default function ContactPage() {
 
             {/* Right Column: Functional Contact Form */}
             <div className="lg:col-span-7">
-              <div className="bg-white border border-[#E7E9F0] rounded-[20px] p-8 sm:p-10 shadow-[0_12px_32px_-16px_rgba(11,18,32,0.1)]">
+              <div className="bg-white border border-[#E2E8F0] rounded-[26px] p-8 sm:p-10 shadow-md">
                 <div className="mb-6">
-                  <h2 
-                    className="text-[22px] font-semibold text-[#0B1220]"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                  >
+                  <h2 className="text-[24px] font-bold text-[#0B1220]">
                     Send Us a Message
                   </h2>
-                  <p className="text-[14px] text-[#4A5468] mt-1">
+                  <p className="text-[14.5px] text-[#475569] mt-1 font-medium">
                     Fill out the details below and our team will get back to you within 24 hours.
                   </p>
                 </div>
 
                 {status.type === 'success' && (
-                  <div className="mb-6 p-4 rounded-[12px] bg-[#25D366]/10 border border-[#25D366]/30 text-[#0B1220] flex items-start gap-3">
+                  <div className="mb-6 p-4 rounded-[14px] bg-[#25D366]/10 border border-[#25D366]/30 text-[#0B1220] flex items-start gap-3">
                     <CheckCircle2 size={18} className="text-[#25D366] flex-shrink-0 mt-0.5" />
-                    <span className="text-[14px]">{status.message}</span>
+                    <span className="text-[14px] font-semibold">{status.message}</span>
                   </div>
                 )}
 
                 {status.type === 'error' && (
-                  <div className="mb-6 p-4 rounded-[12px] bg-red-50 border border-red-200 text-red-800 flex items-start gap-3">
+                  <div className="mb-6 p-4 rounded-[14px] bg-red-50 border border-red-200 text-red-800 flex items-start gap-3">
                     <AlertCircle size={18} className="text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-[14px]">{status.message}</span>
+                    <span className="text-[14px] font-semibold">{status.message}</span>
                   </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="form-group mb-0">
-                      <label className="form-label">Full Name *</label>
+                      <label className="form-label font-bold text-[#0B1220]">Full Name *</label>
                       <input
                         type="text"
                         name="name"
@@ -202,12 +211,12 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="e.g. Alex Morgan"
-                        className="input-clean"
+                        className="input-clean font-medium"
                       />
                     </div>
 
                     <div className="form-group mb-0">
-                      <label className="form-label">Work Email *</label>
+                      <label className="form-label font-bold text-[#0B1220]">Work Email *</label>
                       <input
                         type="email"
                         name="email"
@@ -215,25 +224,25 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="alex@company.com"
-                        className="input-clean"
+                        className="input-clean font-medium"
                       />
                     </div>
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Company / Brand Name (Optional)</label>
+                    <label className="form-label font-bold text-[#0B1220]">Company / Brand Name (Optional)</label>
                     <input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="e.g. Acme Corp"
-                      className="input-clean"
+                      className="input-clean font-medium"
                     />
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Your Message or Channels of Interest *</label>
+                    <label className="form-label font-bold text-[#0B1220]">Your Message or Channels of Interest *</label>
                     <textarea
                       name="message"
                       required
@@ -241,14 +250,14 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your business goals, estimated message volume, or custom integration needs..."
-                      className="input-clean form-textarea"
+                      className="input-clean form-textarea font-medium"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="btn-pill btn-primary w-full justify-center text-[15px] py-3.5 mt-2"
+                    className="btn-lime w-full justify-center text-[15px] py-3.5 mt-2 font-bold shadow-md"
                   >
                     {loading ? (
                       <span>Sending inquiry...</span>
@@ -261,7 +270,7 @@ export default function ContactPage() {
                   </button>
 
                   <div className="text-center pt-2">
-                    <span className="text-[12px] text-[#8891A3] font-mono">
+                    <span className="text-[12px] text-[#64748B] font-mono font-semibold">
                       🔒 Your data is protected by end-to-end encryption.
                     </span>
                   </div>

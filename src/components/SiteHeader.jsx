@@ -3,15 +3,12 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import GetAseedLogo from './GetAseedLogo';
+import { WhatsAppBrandIcon, InstagramBrandIcon, FacebookBrandIcon } from './BrandIcons';
 import { 
   ChevronDown, 
   Menu, 
   X, 
-  MessageSquare, 
-  Sparkles, 
   ArrowRight,
-  Send,
-  Share2,
   ExternalLink
 } from 'lucide-react';
 
@@ -22,7 +19,7 @@ const channels = [
     badge: 'Official Cloud API',
     description: 'Transform communication with verified profiles, catalogs, and smart broadcasts.',
     color: '#25D366',
-    icon: MessageSquare
+    icon: WhatsAppBrandIcon
   },
   {
     name: 'Facebook',
@@ -30,7 +27,7 @@ const channels = [
     badge: 'Meta Partner',
     description: 'Messenger automation, Click-to-Messenger ad funnels, and comment growth tools.',
     color: '#1877F2',
-    icon: Share2
+    icon: FacebookBrandIcon
   },
   {
     name: 'Instagram',
@@ -38,7 +35,7 @@ const channels = [
     badge: 'Graph API',
     description: 'Answer FAQs, auto-reply to story replies, and convert post comments to sales.',
     color: '#962FBF',
-    icon: Send
+    icon: InstagramBrandIcon
   }
 ];
 
@@ -48,8 +45,6 @@ export default function SiteHeader() {
   const [channelsOpen, setChannelsOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
-
-  const isSkyHeroPage = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,15 +79,11 @@ export default function SiteHeader() {
         className="sticky top-0 z-50 transition-all duration-200"
         style={{
           height: 'var(--header-height)',
-          backgroundColor: isScrolled 
-            ? 'rgba(255, 255, 255, 0.95)' 
-            : isSkyHeroPage 
-              ? 'rgba(255, 255, 255, 0.15)' 
-              : 'var(--paper)',
+          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.88)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: isScrolled ? '1px solid #E2E8F0' : '1px solid rgba(255, 255, 255, 0.25)',
-          boxShadow: isScrolled ? '0 4px 20px -4px rgba(11, 18, 32, 0.08)' : 'none'
+          borderBottom: '1px solid #E2E8F0',
+          boxShadow: isScrolled ? '0 4px 20px -4px rgba(11, 18, 32, 0.08)' : '0 2px 10px rgba(0,0,0,0.03)'
         }}
       >
         <div className="container-xl h-full flex items-center justify-between">
@@ -106,16 +97,14 @@ export default function SiteHeader() {
             {/* Home Link */}
             <Link 
               href="/" 
-              className={`text-[15px] font-semibold transition-colors py-1 relative ${
-                pathname === '/' 
-                  ? 'text-[#0B1220] font-bold' 
-                  : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
+              className={`text-[14.5px] font-bold tracking-wide transition-colors py-1 relative ${
+                pathname === '/' ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
               }`}
             >
               HOME
               {pathname === '/' && (
                 <span 
-                  className="absolute bottom-[-10px] left-0 right-0 h-[2px] rounded-full" 
+                  className="absolute bottom-[-10px] left-0 right-0 h-[2.5px] rounded-full" 
                   style={{ background: 'var(--thread-gradient)' }} 
                 />
               )}
@@ -127,10 +116,8 @@ export default function SiteHeader() {
                 type="button"
                 onClick={() => setChannelsOpen(!channelsOpen)}
                 onMouseEnter={() => setChannelsOpen(true)}
-                className={`flex items-center gap-1.5 text-[15px] font-semibold transition-colors py-1 relative cursor-pointer ${
-                  isChannelActive 
-                    ? 'text-[#0B1220] font-bold' 
-                    : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
+                className={`flex items-center gap-1.5 text-[14.5px] font-bold tracking-wide transition-colors py-1 relative cursor-pointer ${
+                  isChannelActive ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
                 }`}
                 aria-expanded={channelsOpen}
                 aria-haspopup="true"
@@ -138,11 +125,11 @@ export default function SiteHeader() {
                 <span>CHANNELS</span>
                 <ChevronDown 
                   size={15} 
-                  className={`transition-transform duration-200 ${channelsOpen ? 'rotate-180' : ''}`} 
+                  className={`transition-transform duration-200 text-[#64748B] ${channelsOpen ? 'rotate-180 text-[#0B1220]' : ''}`} 
                 />
                 {isChannelActive && (
                   <span 
-                    className="absolute bottom-[-10px] left-0 right-0 h-[2px] rounded-full" 
+                    className="absolute bottom-[-10px] left-0 right-0 h-[2.5px] rounded-full" 
                     style={{ background: 'var(--thread-gradient)' }} 
                   />
                 )}
@@ -155,7 +142,7 @@ export default function SiteHeader() {
                   className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white rounded-[20px] border border-[#E2E8F0] p-3 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-150 z-50 text-[#0B1220]"
                 >
                   <div className="px-3 py-2 border-b border-[#E2E8F0] mb-1">
-                    <span className="caption-eyebrow text-[#8891A3] text-[11px]">Omnichannel Platforms</span>
+                    <span className="caption-eyebrow text-[#64748B] text-[11px]">Omnichannel Platforms</span>
                   </div>
                   <div className="flex flex-col gap-1">
                     {channels.map((ch) => {
@@ -170,28 +157,22 @@ export default function SiteHeader() {
                             active ? 'bg-[#F8FAFC]' : 'hover:bg-[#F8FAFC]'
                           }`}
                         >
-                          <div 
-                            className="w-9 h-9 rounded-[10px] flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105"
-                            style={{ 
-                              backgroundColor: `${ch.color}18`,
-                              color: ch.color 
-                            }}
-                          >
-                            <Icon size={18} />
+                          <div className="shrink-0 transition-transform group-hover:scale-110">
+                            <Icon size={34} />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between">
-                              <span className="text-[14px] font-bold text-[#0B1220] group-hover:text-[#1877F2] transition-colors">
+                              <span className="text-[14.5px] font-bold text-[#0B1220] group-hover:text-[#1877F2] transition-colors">
                                 {ch.name}
                               </span>
                               <span 
-                                className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full"
+                                className="text-[10.5px] font-mono font-bold px-2 py-0.5 rounded-full"
                                 style={{ backgroundColor: `${ch.color}15`, color: ch.color }}
                               >
                                 {ch.badge}
                               </span>
                             </div>
-                            <p className="text-[12px] text-[#64748B] line-clamp-2 mt-0.5 leading-relaxed">
+                            <p className="text-[12px] text-[#475569] line-clamp-2 mt-0.5 leading-relaxed">
                               {ch.description}
                             </p>
                           </div>
@@ -206,16 +187,14 @@ export default function SiteHeader() {
             {/* Pricing */}
             <Link 
               href="/pricing" 
-              className={`text-[15px] font-semibold transition-colors py-1 relative ${
-                pathname === '/pricing' 
-                  ? 'text-[#0B1220] font-bold' 
-                  : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
+              className={`text-[14.5px] font-bold tracking-wide transition-colors py-1 relative ${
+                pathname === '/pricing' ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
               }`}
             >
               PRICING
               {pathname === '/pricing' && (
                 <span 
-                  className="absolute bottom-[-10px] left-0 right-0 h-[2px] rounded-full" 
+                  className="absolute bottom-[-10px] left-0 right-0 h-[2.5px] rounded-full" 
                   style={{ background: 'var(--thread-gradient)' }} 
                 />
               )}
@@ -224,16 +203,14 @@ export default function SiteHeader() {
             {/* About Us */}
             <Link 
               href="/about-us" 
-              className={`text-[15px] font-semibold transition-colors py-1 relative ${
-                pathname === '/about-us' 
-                  ? 'text-[#0B1220] font-bold' 
-                  : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
+              className={`text-[14.5px] font-bold tracking-wide transition-colors py-1 relative ${
+                pathname === '/about-us' ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
               }`}
             >
               ABOUT US
               {pathname === '/about-us' && (
                 <span 
-                  className="absolute bottom-[-10px] left-0 right-0 h-[2px] rounded-full" 
+                  className="absolute bottom-[-10px] left-0 right-0 h-[2.5px] rounded-full" 
                   style={{ background: 'var(--thread-gradient)' }} 
                 />
               )}
@@ -242,16 +219,14 @@ export default function SiteHeader() {
             {/* Contact */}
             <Link 
               href="/contact" 
-              className={`text-[15px] font-semibold transition-colors py-1 relative ${
-                pathname === '/contact' 
-                  ? 'text-[#0B1220] font-bold' 
-                  : isScrolled || !isSkyHeroPage ? 'text-[#475569] hover:text-[#0B1220]' : 'text-white/90 hover:text-white'
+              className={`text-[14.5px] font-bold tracking-wide transition-colors py-1 relative ${
+                pathname === '/contact' ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
               }`}
             >
               CONTACT
               {pathname === '/contact' && (
                 <span 
-                  className="absolute bottom-[-10px] left-0 right-0 h-[2px] rounded-full" 
+                  className="absolute bottom-[-10px] left-0 right-0 h-[2.5px] rounded-full" 
                   style={{ background: 'var(--thread-gradient)' }} 
                 />
               )}
@@ -273,7 +248,7 @@ export default function SiteHeader() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-[12px] text-[#0B1220] bg-white/80 hover:bg-white border border-[#E2E8F0] transition-colors"
+              className="p-2.5 rounded-[12px] text-[#0B1220] bg-white hover:bg-[#F8FAFC] border border-[#E2E8F0] transition-colors shadow-sm"
               aria-label="Toggle mobile navigation menu"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -317,12 +292,7 @@ export default function SiteHeader() {
                         pathname === ch.href ? 'bg-[#F8FAFC] text-[#0B1220]' : 'text-[#475569] hover:bg-[#F8FAFC]'
                       }`}
                     >
-                      <div 
-                        className="w-7 h-7 rounded-[8px] flex items-center justify-center"
-                        style={{ backgroundColor: `${ch.color}15`, color: ch.color }}
-                      >
-                        <Icon size={15} />
-                      </div>
+                      <Icon size={24} />
                       <span>{ch.name}</span>
                     </Link>
                   );

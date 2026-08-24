@@ -30,27 +30,39 @@ export default function AboutPage() {
 
   return (
     <div className="bg-white">
-      {/* 1. Narrative Hero & Mission */}
-      <section className="section-major bg-[#FFFFFF] border-b border-[#E7E9F0]">
-        <div className="container-xl">
-          <div className="max-w-[760px] mx-auto space-y-8">
-            <div className="inline-flex items-center gap-2 pill-eyebrow">
-              <Sparkles size={13} className="text-[#1877F2]" />
-              <span>About GetAseed</span>
+      {/* 1. Sky Atmosphere Hero & Mission */}
+      <section className="sky-hero-bg pt-12 pb-20 sm:pb-28 text-white relative">
+        <div className="container-xl max-w-4xl mx-auto space-y-6 text-center relative z-10">
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B1220]/80 backdrop-blur-md border border-white/20 text-white shadow-md">
+              <Sparkles size={14} className="text-[#ABEF06]" />
+              <span className="text-[12.5px] font-mono font-bold tracking-wide uppercase text-white">
+                About GetAseed
+              </span>
             </div>
+          </div>
 
-            <h1 
-              className="display-l text-[#0B1220] tracking-tight leading-tight"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              We are dedicated to driving business growth through the power of Conversational Commerce tools.
-            </h1>
+          <h1 
+            className="text-[38px] sm:text-[54px] lg:text-[62px] font-extrabold text-white tracking-tight leading-[1.08]"
+            style={{ textShadow: '0 2px 20px rgba(0, 0, 0, 0.25)' }}
+          >
+            Driving business growth with Conversational Commerce
+          </h1>
 
-            <p className="body-l font-medium text-[#0B1220] leading-relaxed">
-              Our mission is to enhance sales and customer engagement by providing innovative solutions tailored to your needs.
-            </p>
+          <p 
+            className="text-[17px] sm:text-[20px] text-white font-medium max-w-2xl mx-auto leading-relaxed"
+            style={{ textShadow: '0 1px 10px rgba(0, 0, 0, 0.2)' }}
+          >
+            Our mission is to enhance sales and customer engagement by providing innovative AI chatbots tailored to your needs.
+          </p>
+        </div>
+      </section>
 
-            <div className="space-y-6 text-[#4A5468] text-[16.5px] leading-relaxed pt-2 border-t border-[#E7E9F0]">
+      {/* 2. Narrative Content */}
+      <section className="section-major bg-white border-b border-[#E2E8F0]">
+        <div className="container-xl">
+          <div className="max-w-[780px] mx-auto space-y-8">
+            <div className="space-y-6 text-[#334155] text-[17px] leading-relaxed font-medium">
               <p>
                 We believe in the transformative power of conversations. Building strong customer relationships through meaningful dialogue is essential for converting prospects into sales. Sales are the lifeblood of any business.
               </p>
@@ -63,15 +75,15 @@ export default function AboutPage() {
             </div>
 
             {/* Office location card */}
-            <div className="p-6 rounded-[16px] bg-[#F6F7FB] border border-[#E7E9F0] flex items-start gap-4">
-              <div className="w-10 h-10 rounded-[12px] bg-[#0B1220] text-white flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Building2 size={18} />
+            <div className="p-7 rounded-[22px] bg-[#F8FAFC] border border-[#E2E8F0] flex items-start gap-5 shadow-sm">
+              <div className="w-12 h-12 rounded-[14px] bg-[#0B1220] text-white flex items-center justify-center flex-shrink-0 mt-0.5 shadow-md">
+                <Building2 size={22} className="text-[#ABEF06]" />
               </div>
-              <div className="text-[14px]">
-                <div className="font-semibold text-[#0B1220]">Headquarters & Technology Hub</div>
-                <div className="text-[#4A5468] mt-0.5">Part of the Codesoftic Ecosystem</div>
-                <div className="text-[#8891A3] mt-1 flex items-center gap-1">
-                  <MapPin size={13} className="text-[#1877F2]" />
+              <div className="text-[14.5px]">
+                <div className="font-bold text-[#0B1220] text-[16px]">Headquarters & Technology Hub</div>
+                <div className="text-[#475569] mt-0.5 font-medium">Part of the Codesoftic Ecosystem</div>
+                <div className="text-[#64748B] mt-1.5 flex items-center gap-1.5 font-mono text-[13px]">
+                  <MapPin size={14} className="text-[#1877F2]" />
                   <span>A-306, Bestech Business Towers, Mohali, Punjab, India 🇮🇳</span>
                 </div>
               </div>
@@ -80,18 +92,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. Core Values Section */}
-      <section className="section-major bg-[#F6F7FB] border-b border-[#E7E9F0]">
+      {/* 3. Core Values Section */}
+      <section className="section-major bg-[#F8FAFC] border-b border-[#E2E8F0]">
         <div className="container-xl">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="caption-eyebrow text-[#8891A3] mb-3">Core Values</div>
-            <h2 
-              className="display-l text-[#0B1220] tracking-tight"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white text-[#475569] font-mono text-[12px] font-bold uppercase tracking-wider mb-3 border border-[#E2E8F0]">
+              Core Values
+            </div>
+            <h2 className="text-[32px] sm:text-[42px] font-extrabold text-[#0B1220] tracking-tight">
               Who we are and How we do things
             </h2>
-            <p className="body-l text-[#4A5468] mt-2">
+            <p className="text-[16px] text-[#475569] mt-2 font-medium">
               Three guiding principles behind every product decision we make.
             </p>
           </div>
@@ -102,28 +113,25 @@ export default function AboutPage() {
               return (
                 <div
                   key={val.title}
-                  className="card-clean p-8 flex flex-col justify-between hover:border-[#2A3FE0] transition-all bg-white"
+                  className="bg-white border border-[#E2E8F0] rounded-[24px] p-8 flex flex-col justify-between hover:shadow-lg transition-all shadow-sm"
                 >
                   <div className="space-y-4">
                     <div 
-                      className="w-14 h-14 rounded-[14px] flex items-center justify-center shadow-sm"
+                      className="w-14 h-14 rounded-[16px] flex items-center justify-center shadow-sm"
                       style={{ backgroundColor: `${val.color}15`, color: val.color }}
                     >
-                      <Icon size={26} />
+                      <Icon size={28} />
                     </div>
 
-                    <div className="stat-mono text-[13px] text-[#8891A3]">
+                    <div className="stat-mono text-[13px] font-bold text-[#64748B] uppercase">
                       Principle 0{idx + 1}
                     </div>
 
-                    <h3 
-                      className="text-[22px] font-semibold text-[#0B1220]"
-                      style={{ fontFamily: 'var(--font-display)' }}
-                    >
+                    <h3 className="text-[22px] font-bold text-[#0B1220]">
                       {val.title}
                     </h3>
 
-                    <p className="text-[14.5px] text-[#4A5468] leading-relaxed">
+                    <p className="text-[14.5px] text-[#475569] leading-relaxed font-medium">
                       {val.desc}
                     </p>
                   </div>
@@ -134,26 +142,26 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 3. CTA Section */}
+      {/* 4. CTA Section */}
       <section className="section-compact bg-white">
         <div className="container-xl text-center max-w-2xl mx-auto space-y-6">
-          <h2 className="display-m text-[#0B1220]" style={{ fontFamily: 'var(--font-display)' }}>
+          <h2 className="text-[30px] sm:text-[38px] font-extrabold text-[#0B1220]">
             Ready to scale your conversational commerce?
           </h2>
-          <p className="body-m text-[#4A5468]">
+          <p className="text-[16px] text-[#475569] font-medium">
             Get started with 7 days free onboarding and experience calm, automated customer conversations.
           </p>
-          <div className="pt-2 flex items-center justify-center gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
               href="https://chat.getaseed.com/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-pill btn-primary px-7 py-3"
+              className="btn-lime px-8 py-3.5 text-[15px] font-bold"
             >
               <span>Get Started Free</span>
-              <ArrowRight size={15} />
+              <span className="arrow-circle-dark">↗</span>
             </a>
-            <Link href="/contact" className="btn-pill btn-secondary px-6 py-3">
+            <Link href="/contact" className="px-7 py-3.5 rounded-full bg-[#0B1220] text-white font-bold text-[14.5px] hover:bg-[#1E293B]">
               <span>Contact Sales</span>
             </Link>
           </div>

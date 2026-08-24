@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import GetAseedLogo from './GetAseedLogo';
 import { Mail, MapPin, ExternalLink, ArrowUpRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { WhatsAppBrandIcon, InstagramBrandIcon, FacebookBrandIcon, MetaBrandIcon } from './BrandIcons';
 
 export default function SiteFooter() {
   return (
@@ -9,13 +10,10 @@ export default function SiteFooter() {
         {/* Row 1: Top Banner Headline */}
         <div className="pb-10 border-b border-[#1E293B] flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="max-w-2xl">
-            <h3 
-              className="text-white text-[24px] sm:text-[30px] font-semibold tracking-tight"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Learn how to grow 💪 audience fast in with us
+            <h3 className="text-white text-[24px] sm:text-[32px] font-extrabold tracking-tight">
+              Learn how to grow audience fast with us
             </h3>
-            <p className="text-[#8891A3] text-[15px] mt-2">
+            <p className="text-[#94A3B8] text-[15px] mt-2 font-medium">
               Official Meta Cloud API partner automating conversations across WhatsApp, Facebook, and Instagram.
             </p>
           </div>
@@ -24,10 +22,10 @@ export default function SiteFooter() {
               href="https://chat.getaseed.com/register" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="btn-pill bg-white text-[#0B1220] hover:bg-[#F6F7FB] font-medium text-[14px] px-6 py-3"
+              className="btn-lime text-[14px] font-bold shadow-lg"
             >
               <span>Get Started Free</span>
-              <ArrowUpRight size={16} />
+              <span className="arrow-circle-dark">↗</span>
             </a>
           </div>
         </div>
@@ -37,17 +35,17 @@ export default function SiteFooter() {
           {/* Brand & Address Column */}
           <div className="lg:col-span-4 space-y-5">
             <GetAseedLogo variant="white" size="large" />
-            <p className="text-[#8891A3] text-[14px] leading-relaxed max-w-sm">
+            <p className="text-[#94A3B8] text-[14px] leading-relaxed max-w-sm font-medium">
               The calm, unified command center for conversational commerce. Turn WhatsApp, Facebook Messenger, and Instagram interactions into automated sales pipelines.
             </p>
-            <div className="flex flex-col gap-2 pt-2 text-[13px] text-[#8891A3]">
+            <div className="flex flex-col gap-2 pt-2 text-[13px] text-[#94A3B8]">
               <div className="flex items-start gap-2.5">
                 <MapPin size={16} className="text-[#1877F2] flex-shrink-0 mt-0.5" />
-                <span>A-306, Bestech Business Towers, Mohali, Punjab, India 🇮🇳</span>
+                <span className="font-medium">A-306, Bestech Business Towers, Mohali, Punjab, India 🇮🇳</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail size={16} className="text-[#25D366] flex-shrink-0" />
-                <a href="mailto:online@getaseed.com" className="hover:text-white transition-colors">
+                <a href="mailto:online@getaseed.com" className="hover:text-white font-medium transition-colors">
                   online@getaseed.com
                 </a>
               </div>
@@ -57,7 +55,7 @@ export default function SiteFooter() {
           {/* Company Column */}
           <div className="lg:col-span-2 space-y-4">
             <h4 className="caption-eyebrow text-white text-[12px]">Company</h4>
-            <ul className="space-y-3 text-[14px] text-[#8891A3]">
+            <ul className="space-y-3 text-[14px] text-[#94A3B8] font-medium">
               <li>
                 <Link href="/about-us" className="hover:text-white transition-colors">
                   About Us
@@ -90,7 +88,7 @@ export default function SiteFooter() {
           {/* Explore Column */}
           <div className="lg:col-span-3 space-y-4">
             <h4 className="caption-eyebrow text-white text-[12px]">Explore</h4>
-            <ul className="space-y-3 text-[14px] text-[#8891A3]">
+            <ul className="space-y-3 text-[14px] text-[#94A3B8] font-medium">
               <li>
                 <a 
                   href="https://cal.com/codesoftic" 
@@ -127,22 +125,22 @@ export default function SiteFooter() {
           {/* Resources & Official Badges Column */}
           <div className="lg:col-span-3 space-y-4">
             <h4 className="caption-eyebrow text-white text-[12px]">Resources & Channels</h4>
-            <ul className="space-y-3 text-[14px] text-[#8891A3]">
+            <ul className="space-y-3 text-[14px] text-[#94A3B8] font-medium">
               <li>
-                <Link href="/whatsapp" className="hover:text-white transition-colors flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+                <Link href="/whatsapp" className="hover:text-white transition-colors flex items-center gap-2.5">
+                  <WhatsAppBrandIcon size={18} />
                   <span>WhatsApp Chatbot</span>
                 </Link>
               </li>
               <li>
-                <Link href="/instagram" className="hover:text-white transition-colors flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#962FBF]" />
+                <Link href="/instagram" className="hover:text-white transition-colors flex items-center gap-2.5">
+                  <InstagramBrandIcon size={18} />
                   <span>Instagram Chatbot</span>
                 </Link>
               </li>
               <li>
-                <Link href="/facebook" className="hover:text-white transition-colors flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#1877F2]" />
+                <Link href="/facebook" className="hover:text-white transition-colors flex items-center gap-2.5">
+                  <FacebookBrandIcon size={18} />
                   <span>Facebook Chatbot</span>
                 </Link>
               </li>
@@ -150,23 +148,19 @@ export default function SiteFooter() {
 
             {/* Official Meta Badges */}
             <div className="pt-3 space-y-2">
-              <div className="flex items-center gap-2.5 px-3 py-2 rounded-[10px] bg-[#101B33] border border-[#1E293B]">
-                <div className="w-6 h-6 rounded-full bg-[#1877F2]/20 flex items-center justify-center text-[#1877F2]">
-                  <ShieldCheck size={14} />
-                </div>
+              <div className="flex items-center gap-2.5 px-3 py-2 rounded-[12px] bg-[#101B33] border border-[#1E293B]">
+                <MetaBrandIcon size={20} />
                 <div>
-                  <div className="text-[12px] font-semibold text-white">Meta Business Partner</div>
-                  <div className="text-[10px] text-[#8891A3] font-mono">Official Cloud Integration</div>
+                  <div className="text-[12px] font-bold text-white">Meta Business Partner</div>
+                  <div className="text-[10px] text-[#94A3B8] font-mono">Official Cloud Integration</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5 px-3 py-2 rounded-[10px] bg-[#101B33] border border-[#1E293B]">
-                <div className="w-6 h-6 rounded-full bg-[#25D366]/20 flex items-center justify-center text-[#25D366]">
-                  <CheckCircle2 size={14} />
-                </div>
+              <div className="flex items-center gap-2.5 px-3 py-2 rounded-[12px] bg-[#101B33] border border-[#1E293B]">
+                <WhatsAppBrandIcon size={20} />
                 <div>
-                  <div className="text-[12px] font-semibold text-white">WhatsApp Business API</div>
-                  <div className="text-[10px] text-[#8891A3] font-mono">Verified Direct Platform</div>
+                  <div className="text-[12px] font-bold text-white">WhatsApp Business API</div>
+                  <div className="text-[10px] text-[#94A3B8] font-mono">Verified Direct Platform</div>
                 </div>
               </div>
             </div>
@@ -174,7 +168,7 @@ export default function SiteFooter() {
         </div>
 
         {/* Row 3: Legal Copyright Bar */}
-        <div className="pt-8 border-t border-[#1E293B] flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#8891A3]">
+        <div className="pt-8 border-t border-[#1E293B] flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#94A3B8] font-medium">
           <div className="font-mono">
             © 2026 GETASEED. All rights reserved.
           </div>
