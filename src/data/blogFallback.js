@@ -7,9 +7,13 @@ export const fallbackPosts = [
     publishedAt: 'Jun 15, 2026',
     readTime: '5 mins read',
     excerpt: 'Discover how verified WhatsApp business catalogs, instant 1-click checkouts, and zero-markup broadcasting transform customer retention.',
+    featuredImage: '/images/avatars/avatar-2.jpg',
+    image: '/images/avatars/avatar-2.jpg',
     commentsCount: 18,
     viewsCount: 420,
-    image: '/images/avatars/avatar-2.jpg',
+    showBookmark: true,
+    ctaText: 'Read Article',
+    featuredBlog: true,
     content: `
       <h2>The Shift Towards Conversational Commerce</h2>
       <p>Modern consumers no longer want to wait for email responses or navigate complicated web store menus. They expect instant, personalized assistance right where they spend most of their time: WhatsApp, Instagram DMs, and Facebook Messenger.</p>
@@ -33,9 +37,13 @@ export const fallbackPosts = [
     publishedAt: 'Jun 12, 2026',
     readTime: '6 mins read',
     excerpt: 'Learn how to feed PDFs, product inventory URLs, and customer FAQs into a disciplined single-inbox conversational agent.',
+    featuredImage: '/images/avatars/avatar-4.jpg',
+    image: '/images/avatars/avatar-4.jpg',
     commentsCount: 36,
     viewsCount: 810,
-    image: '/images/avatars/avatar-4.jpg',
+    showBookmark: true,
+    ctaText: 'Read Article',
+    featuredBlog: false,
     content: `
       <h2>Beyond Generic Chatbots</h2>
       <p>Generic decision trees frustrate customers. Modern businesses require contextual AI agents trained specifically on their inventory, return policies, and shipping rules.</p>
@@ -55,9 +63,13 @@ export const fallbackPosts = [
     publishedAt: 'Jun 08, 2026',
     readTime: '4 mins read',
     excerpt: 'Turn reel comments, story mentions, and direct messages into qualified sales leads 24/7 on autopilot.',
+    featuredImage: '/images/avatars/avatar-1.jpg',
+    image: '/images/avatars/avatar-1.jpg',
     commentsCount: 24,
     viewsCount: 590,
-    image: '/images/avatars/avatar-1.jpg',
+    showBookmark: true,
+    ctaText: 'Read Article',
+    featuredBlog: false,
     content: `
       <h2>Converting Attention into Revenue</h2>
       <p>Instagram is one of the highest-intent discovery channels for modern consumer brands. Yet, thousands of comments and story replies go unanswered every day.</p>

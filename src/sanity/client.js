@@ -20,8 +20,29 @@ export function urlFor(source) {
   return builder.image(source).auto('format').fit('max');
 }
 
+function mapSanityPost(p) {
+  const imageSource = p.featuredImage || p.mainImage;
+  return {
+    id: p._id,
+    title: p.title,
+    slug: p.slug?.current || p.slug || p._id,
+    category: p.category || 'Automation',
+    publishedAt: p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recent',
+    readTime: p.readTime || '5 mins read',
+    excerpt: p.excerpt || '',
+    featuredImage: imageSource ? urlFor(imageSource).url() : '/images/avatars/avatar-2.jpg',
+    image: imageSource ? urlFor(imageSource).url() : '/images/avatars/avatar-2.jpg',
+    commentsCount: p.commentsCount ?? 18,
+    viewsCount: p.viewsCount ?? 420,
+    showBookmark: p.showBookmark ?? true,
+    ctaText: p.ctaText || 'Read Article',
+    featuredBlog: Boolean(p.featuredBlog),
+    content: p.body ? (typeof p.body === 'string' ? p.body : JSON.stringify(p.body)) : null
+  };
+}
+
 /**
- * Fetch latest blog posts from Sanity (projectId: 6sg9up19) with fallback
+ * Fetch latest blog posts from Sanity (projectId: 6sg9up19)
  */
 export async function getBlogPosts() {
   try {
@@ -29,19 +50,7 @@ export async function getBlogPosts() {
     if (!posts || posts.length === 0) {
       return fallbackPosts;
     }
-    return posts.map(p => ({
-      id: p._id,
-      title: p.title,
-      slug: p.slug?.current || p._id,
-      category: p.category || 'Automation',
-      publishedAt: p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recent',
-      readTime: p.readTime || '5 mins read',
-      excerpt: p.excerpt || '',
-      commentsCount: p.commentsCount || 18,
-      viewsCount: p.viewsCount || 420,
-      image: p.mainImage ? urlFor(p.mainImage).url() : '/images/avatars/avatar-2.jpg',
-      content: p.body ? (typeof p.body === 'string' ? p.body : JSON.stringify(p.body)) : null
-    }));
+    return posts.map(mapSanityPost);
   } catch (error) {
     console.warn('Sanity fetch for project 6sg9up19:', error.message);
     return fallbackPosts;
@@ -57,19 +66,7 @@ export async function getPostBySlug(slug) {
     if (!post) {
       return fallbackPosts.find(p => p.slug === slug) || null;
     }
-    return {
-      id: post._id,
-      title: post.title,
-      slug: post.slug?.current || slug,
-      category: post.category || 'Automation',
-      publishedAt: post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recent',
-      readTime: post.readTime || '5 mins read',
-      excerpt: post.excerpt || '',
-      commentsCount: post.commentsCount || 18,
-      viewsCount: post.viewsCount || 420,
-      image: post.mainImage ? urlFor(post.mainImage).url() : '/images/avatars/avatar-2.jpg',
-      content: post.body ? (typeof post.body === 'string' ? post.body : JSON.stringify(post.body)) : null
-    };
+    return mapSanityPost(post);
   } catch (error) {
     console.warn('Sanity fetch by slug error:', error.message);
     return fallbackPosts.find(p => p.slug === slug) || null;

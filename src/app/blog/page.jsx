@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Bookmark, MessageCircle, Eye, ArrowUpRight, BookOpen, Sparkles } from 'lucide-react';
+import { Bookmark, MessageCircle, Eye, ArrowUpRight, BookOpen, Star } from 'lucide-react';
 import { getBlogPosts } from '@/sanity/client';
-import { fallbackPosts } from '@/data/blogFallback';
 
 export const metadata = {
   title: 'Blog & Playbooks — Conversational Commerce Insights | GetAseed',
@@ -42,20 +41,30 @@ export default async function BlogIndexPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
               <Link
-                key={post.id}
+                key={post.id || post.slug}
                 href={`/blog/${post.slug}`}
                 className="group relative rounded-[28px] overflow-hidden min-h-[480px] flex flex-col justify-end p-5 border border-[#E2E8F0] bg-[#0B1220] shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5"
               >
-                {/* Cover Image */}
+                {/* Featured Cover Image */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
                   <Image
-                    src={post.image || '/images/avatars/avatar-2.jpg'}
+                    src={post.featuredImage || post.image || '/images/avatars/avatar-2.jpg'}
                     alt={post.title}
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                 </div>
+
+                {/* Optional Featured Pill */}
+                {post.featuredBlog && (
+                  <div className="absolute top-4 right-4 z-20">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ABEF06] text-[#0B1220] font-bold text-[11.5px] shadow-lg border border-black/10">
+                      <Star size={12} fill="#0B1220" />
+                      <span>Featured</span>
+                    </span>
+                  </div>
+                )}
 
                 {/* Frosted Glass Overlay */}
                 <div className="relative z-10 bg-white/90 backdrop-blur-xl border border-white/70 rounded-[22px] p-6 shadow-xl text-[#0B1220] transition-all group-hover:bg-white/98">
@@ -68,14 +77,28 @@ export default async function BlogIndexPage() {
                       <span className="text-[#64748B] text-[12px] font-medium">
                         {post.publishedAt}
                       </span>
+                      <span className="text-[#94A3B8] text-[11.5px]">•</span>
+                      <span className="text-[#64748B] text-[12px] font-medium">
+                        {post.readTime}
+                      </span>
                     </div>
 
                     <div className="flex items-center gap-3 text-[#64748B]">
-                      <Bookmark size={15} />
-                      <div className="flex items-center gap-1 text-[11.5px] font-mono">
-                        <MessageCircle size={13} />
-                        <span>{post.commentsCount || 18}</span>
-                      </div>
+                      {post.showBookmark !== false && (
+                        <Bookmark size={15} />
+                      )}
+                      {post.commentsCount !== undefined && (
+                        <div className="flex items-center gap-1 text-[11.5px] font-mono">
+                          <MessageCircle size={13} />
+                          <span>{post.commentsCount}</span>
+                        </div>
+                      )}
+                      {post.viewsCount !== undefined && (
+                        <div className="flex items-center gap-1 text-[11.5px] font-mono">
+                          <Eye size={13} />
+                          <span>{post.viewsCount}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -89,7 +112,7 @@ export default async function BlogIndexPage() {
 
                   <div className="flex items-center justify-between pt-3 border-t border-[#E2E8F0]/80">
                     <span className="text-[13px] font-bold text-[#0B1220] group-hover:text-[#1877F2] transition-colors">
-                      Read Article
+                      {post.ctaText || 'Read Article'}
                     </span>
                     <div className="w-8 h-8 rounded-full bg-[#0B1220] text-white group-hover:bg-[#ABEF06] group-hover:text-[#0B1220] flex items-center justify-center transition-all shadow-sm">
                       <ArrowUpRight size={16} />
