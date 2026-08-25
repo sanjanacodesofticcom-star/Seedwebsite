@@ -1,9 +1,7 @@
 import HeroReferenceSection from '@/components/HeroReferenceSection';
 import SocialProofMarquee from '@/components/SocialProofMarquee';
-import BentoReferenceSection from '@/components/BentoReferenceSection';
 import ServicesReferenceGrid from '@/components/ServicesReferenceGrid';
 import TrainAIAgentPanel from '@/components/TrainAIAgentPanel';
-import DeviceMockup from '@/components/DeviceMockup';
 import ToolsIntegrationRow from '@/components/ToolsIntegrationRow';
 import FAQAccordion from '@/components/FAQAccordion';
 import { faqsData } from '@/data/faqs';
@@ -24,101 +22,84 @@ export default function HomePage() {
       {/* 2. Partner Logo Marquee */}
       <SocialProofMarquee />
 
-      {/* 3. Bento Grid */}
-      <BentoReferenceSection />
-
-      {/* 4. Services Grid */}
+      {/* 3. Services & Automation Grid */}
       <ServicesReferenceGrid />
 
-      {/* 5. Interactive Dark AI Data Training Console */}
+      {/* 4. Interactive Dark AI Data Training Console */}
       <TrainAIAgentPanel />
 
-      {/* 6. Supercharge Lead Generation with Coded Device Mockup */}
+      {/* 5. Drive More Sales on Autopilot (Clean, Centered Lead Generation Section) */}
       <section className="section-major bg-[#F8FAFC] border-y border-[#E2E8F0]">
         <div className="container-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-sm text-[#0B1220] font-mono text-[12px] font-semibold uppercase tracking-wider">
-                <Zap size={13} className="text-[#25D366]" />
-                <span>Drive more Sales on Autopilot</span>
-              </div>
-
-              <h2 className="text-[32px] sm:text-[42px] font-extrabold text-[#0B1220] tracking-tight leading-[1.18]">
-                Supercharge your lead generation
-              </h2>
-
-              <p className="text-[16px] sm:text-[17px] text-[#475569] leading-relaxed">
-                Attract and engage customers when they're ready. Capture email addresses and phone numbers for up to 80% of your leads and automatically add them to your database.
-              </p>
-
-              <div className="pt-2">
-                <a
-                  href="https://chat.getaseed.com/register"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-lime text-[14.5px] font-bold shadow-md"
-                >
-                  <span>START FREE TRIAL</span>
-                  <span className="arrow-circle-dark">↗</span>
-                </a>
-              </div>
-
-              {/* 3 Sub-points */}
-              <div className="pt-6 space-y-4 border-t border-[#E2E8F0]">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#25D366]/15 text-[#25D366] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 size={15} />
-                  </div>
-                  <div>
-                    <h4 className="text-[15px] font-bold text-[#0B1220]">
-                      Increase conversion rates to 90%
-                    </h4>
-                    <p className="text-[13.5px] text-[#64748B]">
-                      No lead slips away and no follow-up opportunity is missed.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#1877F2]/15 text-[#1877F2] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 size={15} />
-                  </div>
-                  <div>
-                    <h4 className="text-[15px] font-bold text-[#0B1220]">
-                      Automatically respond to messages
-                    </h4>
-                    <p className="text-[13.5px] text-[#64748B]">
-                      Instantly engage with every message across WhatsApp, IG and Messenger.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#962FBF]/15 text-[#962FBF] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 size={15} />
-                  </div>
-                  <div>
-                    <h4 className="text-[15px] font-bold text-[#0B1220]">
-                      Scale your business effortlessly
-                    </h4>
-                    <p className="text-[13.5px] text-[#64748B]">
-                      Automate workflows with Zero Markup Fees on direct Meta Cloud APIs.
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-sm text-[#0B1220] font-mono text-[12px] font-semibold uppercase tracking-wider">
+              <Zap size={13} className="text-[#25D366]" />
+              <span>Drive more Sales on Autopilot</span>
             </div>
 
-            {/* Right Coded Mockup */}
-            <div className="lg:col-span-6">
-              <DeviceMockup />
+            <h2 className="text-[34px] sm:text-[46px] font-extrabold text-[#0B1220] tracking-tight leading-[1.14]">
+              Supercharge your lead generation
+            </h2>
+
+            <p className="text-[17px] sm:text-[19px] text-[#475569] leading-relaxed max-w-2xl mx-auto font-medium">
+              Attract and engage customers when they're ready. Capture email addresses and phone numbers for up to 80% of your leads and automatically add them to your database with zero manual effort.
+            </p>
+
+            <div className="pt-2 flex justify-center">
+              <a
+                href="https://chat.getaseed.com/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-lime text-[15px] font-bold shadow-md inline-flex items-center gap-3 px-8 py-3.5"
+              >
+                <span>START FREE TRIAL</span>
+                <span className="arrow-circle-dark">↗</span>
+              </a>
+            </div>
+
+            {/* 3 Feature Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 text-left">
+              <div className="bg-white border border-[#E2E8F0] rounded-[22px] p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 rounded-full bg-[#25D366]/15 text-[#25D366] flex items-center justify-center mb-4">
+                  <CheckCircle2 size={20} />
+                </div>
+                <h4 className="text-[17px] font-bold text-[#0B1220] mb-2">
+                  Increase conversion rates to 90%
+                </h4>
+                <p className="text-[14px] text-[#64748B] leading-relaxed font-medium">
+                  No lead slips away and no follow-up opportunity is missed with 24/7 instant smart triggers.
+                </p>
+              </div>
+
+              <div className="bg-white border border-[#E2E8F0] rounded-[22px] p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 rounded-full bg-[#1877F2]/15 text-[#1877F2] flex items-center justify-center mb-4">
+                  <CheckCircle2 size={20} />
+                </div>
+                <h4 className="text-[17px] font-bold text-[#0B1220] mb-2">
+                  Automatically respond to messages
+                </h4>
+                <p className="text-[14px] text-[#64748B] leading-relaxed font-medium">
+                  Instantly engage with every message across WhatsApp, Instagram DMs, and Facebook Messenger.
+                </p>
+              </div>
+
+              <div className="bg-white border border-[#E2E8F0] rounded-[22px] p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 rounded-full bg-[#962FBF]/15 text-[#962FBF] flex items-center justify-center mb-4">
+                  <CheckCircle2 size={20} />
+                </div>
+                <h4 className="text-[17px] font-bold text-[#0B1220] mb-2">
+                  Scale your business effortlessly
+                </h4>
+                <p className="text-[14px] text-[#64748B] leading-relaxed font-medium">
+                  Automate workflows and drive recurring revenue with zero commission markup fees on Meta APIs.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. Our Promise to You */}
+      {/* 6. Our Promise to You */}
       <section className="section-major bg-white border-b border-[#E2E8F0]">
         <div className="container-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -227,10 +208,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. Connect Your Tools Easily */}
+      {/* 7. Connect Your Tools Easily */}
       <ToolsIntegrationRow />
 
-      {/* 9. Direct WhatsApp CTA Banner */}
+      {/* 8. Direct WhatsApp CTA Banner */}
       <section className="section-compact bg-white">
         <div className="container-xl">
           <div className="bg-[#0B1220] rounded-[28px] p-8 sm:p-14 text-white relative overflow-hidden border border-[#1E293B] shadow-2xl">
@@ -279,7 +260,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. FAQ Accordion */}
+      {/* 9. FAQ Accordion */}
       <FAQAccordion items={faqsData.home} />
     </div>
   );

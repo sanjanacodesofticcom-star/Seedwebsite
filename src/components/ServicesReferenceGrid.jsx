@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Activity, TrendingUp, Sparkles, Database, Zap } from 'lucide-react';
 import { WhatsAppBrandIcon, InstagramBrandIcon, FacebookBrandIcon } from './BrandIcons';
 
 export default function ServicesReferenceGrid() {
@@ -61,7 +60,7 @@ export default function ServicesReferenceGrid() {
           </a>
         </div>
 
-        {/* 4-Card Grid (3 Service Cards + 1 Team Photo Card) */}
+        {/* 4-Card Grid (3 Service Cards + 1 High-Tech Data Analytics Card) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           
           {services.map((item, idx) => {
@@ -101,23 +100,62 @@ export default function ServicesReferenceGrid() {
             );
           })}
 
-          {/* 4th Card: High-Quality Photo Card */}
-          <div className="rounded-[26px] overflow-hidden relative min-h-[320px] border border-[#E2E8F0] shadow-md flex flex-col justify-end p-6 bg-[#0B1220] group">
-            <Image
-              src="/images/avatars/avatar-4.jpg"
-              alt="GetAseed Enterprise Intelligence"
-              fill
-              className="object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-80"
+          {/* 4th Card: High-Tech Data & Telemetry Analytics Card (Replaced Photo with Data Visuals) */}
+          <div className="bg-[#0B1220] text-white border border-[#1E293B] rounded-[26px] p-7 shadow-lg flex flex-col justify-between group hover:-translate-y-1 transition-all duration-200 relative overflow-hidden">
+            {/* Background Glow */}
+            <div 
+              className="absolute -top-10 -right-10 w-44 h-44 rounded-full opacity-20 pointer-events-none blur-2xl"
+              style={{ background: 'var(--thread-gradient)' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/40 to-transparent" />
-            
-            <div className="relative z-10 text-white space-y-1">
-              <div className="text-[11.5px] font-mono uppercase tracking-wider text-[#ABEF06] font-bold">
-                Data & Strategy
+
+            <div>
+              {/* Header Telemetry Status */}
+              <div className="flex items-center justify-between mb-5">
+                <div className="w-11 h-11 rounded-[14px] bg-[#101B33] border border-[#1E293B] flex items-center justify-center text-[#ABEF06] shadow-sm">
+                  <Activity size={22} className="animate-pulse" />
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-[#25D366] bg-[#25D366]/10 px-2.5 py-0.5 rounded-full border border-[#25D366]/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-ping" />
+                  Live Data Stream
+                </span>
               </div>
-              <h4 className="text-[18px] font-bold text-white leading-snug">
-                Turning live conversations into clear revenue pipelines.
-              </h4>
+
+              <span className="inline-block text-[11px] font-mono font-bold uppercase tracking-wider text-[#ABEF06] mb-2 bg-[#101B33] px-2.5 py-0.5 rounded-full border border-white/10">
+                REAL-TIME TELEMETRY
+              </span>
+
+              <h3 className="text-[20px] font-bold text-white mb-3 leading-snug">
+                Data & Funnel Analytics
+              </h3>
+
+              {/* Data Visualization Graphic */}
+              <div className="bg-[#101B33] rounded-[16px] p-3.5 border border-[#1E293B] mb-4 space-y-2.5">
+                <div className="flex items-center justify-between text-[11.5px] font-mono">
+                  <span className="text-[#94A3B8]">Monthly Data Points</span>
+                  <span className="text-[#ABEF06] font-bold">520,000+</span>
+                </div>
+                {/* Visual Bar Chart */}
+                <div className="h-10 w-full flex items-end gap-1.5 pt-1">
+                  <div className="flex-1 bg-[#1877F2]/40 rounded-t h-[45%]" />
+                  <div className="flex-1 bg-[#1877F2]/60 rounded-t h-[60%]" />
+                  <div className="flex-1 bg-[#962FBF]/70 rounded-t h-[75%]" />
+                  <div className="flex-1 bg-[#25D366] rounded-t h-[95%] shadow-[0_0_8px_rgba(37,211,102,0.5)]" />
+                  <div className="flex-1 bg-[#ABEF06] rounded-t h-[100%] shadow-[0_0_8px_rgba(171,239,6,0.6)]" />
+                </div>
+                <div className="flex items-center justify-between text-[11px] text-[#94A3B8] font-mono pt-1 border-t border-white/10">
+                  <span>Conv. Velocity</span>
+                  <span className="text-white font-bold">+340% ROI</span>
+                </div>
+              </div>
+
+              <p className="text-[13.5px] text-[#94A3B8] leading-relaxed font-medium">
+                Unified Meta Cloud API telemetry across WhatsApp, Instagram & Messenger with zero latency.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-[#1E293B] flex items-center justify-between text-[13px] font-mono text-[#ABEF06]">
+              <span>99.98% API Uptime</span>
+              <Zap size={14} className="text-[#ABEF06]" />
             </div>
           </div>
 
