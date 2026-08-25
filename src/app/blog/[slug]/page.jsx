@@ -1,16 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Clock, Calendar, Share2, CheckCircle2, Bookmark, MessageCircle } from 'lucide-react';
-import { fallbackPosts } from '@/data/blogFallback';
+import { ArrowLeft, Clock, Calendar, Bookmark, Star } from 'lucide-react';
 import { getBlogPosts, getPostBySlug } from '@/sanity/client';
 
-export async function generateStaticParams() {
-  const posts = await getBlogPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata({ params }) {
   const post = await getPostBySlug(params.slug);
@@ -50,6 +45,12 @@ export default async function BlogPostPage({ params }) {
             <span className="bg-[#0B1220] text-white px-3 py-1 rounded-full font-mono text-[12px] font-bold uppercase tracking-wider">
               {post.category}
             </span>
+            {post.featuredBlog && (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ABEF06] text-[#0B1220] font-bold text-[12px] shadow-sm">
+                <Star size={12} fill="#0B1220" />
+                <span>Featured</span>
+              </span>
+            )}
             <span className="text-[#64748B] text-[13px] flex items-center gap-1 font-medium">
               <Calendar size={14} />
               {post.publishedAt}
@@ -70,39 +71,38 @@ export default async function BlogPostPage({ params }) {
         </div>
       </section>
 
-      {/* Featured Cover Image */}
+      {/* Featured Cover Image from Sanity */}
       <section className="container-xl max-w-4xl mx-auto -mt-8 relative z-20">
-        <div className="rounded-[24px] overflow-hidden h-[340px] sm:h-[460px] relative border border-[#E2E8F0] shadow-xl">
+        <div className="rounded-[24px] overflow-hidden h-[340px] sm:h-[480px] relative border border-[#E2E8F0] shadow-xl bg-[#0B1220]">
           <Image
-            src={post.image || '/images/avatars/avatar-2.jpg'}
+            src={post.featuredImage || post.image || '/images/avatars/avatar-2.jpg'}
             alt={post.title}
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
         </div>
       </section>
 
-      {/* Article Content */}
+      {/* Article Body Content */}
       <section className="section-major bg-white">
         <div className="container-xl max-w-3xl mx-auto space-y-8 text-[#334155] text-[17px] leading-relaxed font-medium">
           
           {post.content ? (
             <div 
-              className="prose prose-lg max-w-none space-y-6 [&>h2]:text-[28px] [&>h2]:font-extrabold [&>h2]:text-[#0B1220] [&>h2]:tracking-tight [&>h3]:text-[22px] [&>h3]:font-bold [&>h3]:text-[#0B1220] [&>ul]:space-y-3 [&>ul]:list-disc [&>ul]:pl-6"
+              className="prose prose-lg max-w-none space-y-4 [&>h2]:text-[28px] [&>h2]:font-extrabold [&>h2]:text-[#0B1220] [&>h2]:tracking-tight [&>h3]:text-[22px] [&>h3]:font-bold [&>h3]:text-[#0B1220] [&>ul]:space-y-2 [&>ul]:list-disc [&>ul]:pl-6"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-4">
               <p>{post.excerpt}</p>
-              <p>Learn how to connect Meta Cloud API, WhatsApp Business catalogs, and AI agents directly to automate conversations with zero markup fees.</p>
             </div>
           )}
 
-          {/* CTA Banner at end of article */}
+          {/* CTA Banner at bottom of article */}
           <div className="p-8 sm:p-10 rounded-[24px] bg-[#0B1220] text-white space-y-4 mt-12 shadow-xl border border-[#1E293B]">
             <span className="text-[11.5px] font-mono uppercase tracking-wider text-[#ABEF06] font-bold">
-              Ready to automate?
+              Ready to scale?
             </span>
             <h3 className="text-[24px] sm:text-[30px] font-extrabold text-white tracking-tight">
               Start Free 7-Day WhatsApp & AI Onboarding
