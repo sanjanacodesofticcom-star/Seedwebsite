@@ -13,61 +13,11 @@ import {
 import { WhatsAppBrandIcon, InstagramBrandIcon, FacebookBrandIcon, MetaBrandIcon } from './BrandIcons';
 
 export default function HeroReferenceSection() {
-  const cardsData = [
-    {
-      id: 'performance',
-      type: 'light',
-      title: 'Performance',
-      accentColor: '#25D366',
-      stat: '49%',
-      substat: 'Faster Response Time',
-      details: [
-        { label: 'Storage', val: '24/7 Cloud Sync', highlight: false },
-        { label: 'Auto-reply', val: 'Active AI', highlight: true, color: '#25D366' }
-      ]
-    },
-    {
-      id: 'strategy',
-      type: 'light',
-      title: 'Strategy',
-      badge: 'Grow Faster',
-      label: 'DataPoints',
-      stat: '520k+',
-      desc: 'Customer chats automated on WhatsApp with Zero Markup Fees.'
-    },
-    {
-      id: 'data-training',
-      type: 'dark',
-      title: 'Data training',
-      desc: 'Upload catalogs, PDFs & website URLs',
-      sample: '"Order #9842 is out for delivery today!"'
-    },
-    {
-      id: 'expertise',
-      type: 'light',
-      title: 'Expertise',
-      accentColor: '#962FBF',
-      heading: 'Combines Strategy, Data, and AI Intelligence',
-      highlightStat: '9X',
-      highlightDesc: 'Faster Instagram DM funnels'
-    },
-    {
-      id: 'intelligence',
-      type: 'light',
-      title: 'Intelligence',
-      icon: TrendingUp,
-      heading: 'Key Decision Flow',
-      chart: true,
-      footerLeft: '3 Channels Live',
-      footerRight: '+320%'
-    }
-  ];
-
   return (
-    <section className="brand-hero-bg pt-8 sm:pt-14 pb-14 sm:pb-24 text-[#0B1220] relative overflow-hidden">
+    <section className="brand-hero-bg pt-8 sm:pt-14 pb-20 sm:pb-28 lg:pb-32 text-[#0B1220] relative overflow-hidden">
       {/* Subtle Brand Radial Glow */}
       <div 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[600px] pointer-events-none opacity-60 blur-3xl"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[650px] pointer-events-none opacity-60 blur-3xl"
         style={{
           background: 'radial-gradient(circle, rgba(171,239,6,0.18) 0%, rgba(24,119,242,0.12) 40%, rgba(150,47,191,0.06) 70%, transparent 100%)'
         }}
@@ -113,8 +63,8 @@ export default function HeroReferenceSection() {
           </p>
         </div>
 
-        {/* Dual Pill CTA Buttons (Corrected Mobile & Desktop Layout) */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-14 max-w-xs sm:max-w-none mx-auto w-full px-4">
+        {/* Dual Pill CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 max-w-xs sm:max-w-none mx-auto w-full px-4">
           <a
             href="https://cal.com/codesoftic"
             target="_blank"
@@ -138,8 +88,8 @@ export default function HeroReferenceSection() {
         {/* ========================================================================= */}
         {/* DESKTOP VIEW (lg+): 3D Perspective Curved Arc of Cards                     */}
         {/* ========================================================================= */}
-        <div className="hidden lg:block perspective-container max-w-[1380px] mx-auto px-2 py-4 overflow-hidden">
-          <div className="flex items-center justify-center gap-3.5 lg:gap-4.5 pb-2 pt-2 overflow-hidden">
+        <div className="hidden lg:block perspective-container max-w-[1380px] mx-auto px-4 pt-8 pb-12 overflow-visible">
+          <div className="flex items-center justify-center gap-3.5 lg:gap-4.5 overflow-visible py-4">
             
             {/* Card 1: Left Wing - System Performance */}
             <div 
@@ -196,11 +146,11 @@ export default function HeroReferenceSection() {
               </div>
             </div>
 
-            {/* Card 3: CENTER HERO CARD - Deep Ink Centerpiece */}
+            {/* Card 3: CENTER HERO CARD - Deep Ink Centerpiece (Unclipped with clean padding) */}
             <div 
               className="card-fan-item w-[270px] lg:w-[300px] shrink-0 bg-[#0B1220] text-white rounded-[28px] p-6 shadow-[0_25px_60px_-10px_rgba(11,18,32,0.4)] border-2 border-[#1E293B] relative z-20"
               style={{
-                transform: 'scale(1.06)',
+                transform: 'scale(1.05)',
               }}
             >
               <div className="w-12 h-12 rounded-full bg-[#101B33] flex items-center justify-center mx-auto mb-4 border border-[#1E293B] text-[#ABEF06] shadow-md">
@@ -401,11 +351,11 @@ export default function HeroReferenceSection() {
                     />
                     <path
                       d="M 0 35 Q 25 32 40 20 T 75 12 T 100 4 L 100 40 L 0 40 Z"
-                      fill="url(#brand-chart-grad-mobile)"
+                      fill="url(#brand-chart-grad-mobile-1)"
                       opacity="0.15"
                     />
                     <defs>
-                      <linearGradient id="brand-chart-grad-mobile" x1="0" y1="0" x2="0" y2="1">
+                      <linearGradient id="brand-chart-grad-mobile-1" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="0%" stopColor="#1877F2" />
                         <stop offset="100%" stopColor="#25D366" stopOpacity="0" />
                       </linearGradient>
@@ -524,11 +474,11 @@ export default function HeroReferenceSection() {
                     />
                     <path
                       d="M 0 35 Q 25 32 40 20 T 75 12 T 100 4 L 100 40 L 0 40 Z"
-                      fill="url(#brand-chart-grad-mobile-dup)"
+                      fill="url(#brand-chart-grad-mobile-2)"
                       opacity="0.15"
                     />
                     <defs>
-                      <linearGradient id="brand-chart-grad-mobile-dup" x1="0" y1="0" x2="0" y2="1">
+                      <linearGradient id="brand-chart-grad-mobile-2" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="0%" stopColor="#1877F2" />
                         <stop offset="100%" stopColor="#25D366" stopOpacity="0" />
                       </linearGradient>
@@ -546,7 +496,7 @@ export default function HeroReferenceSection() {
         </div>
 
         {/* Social Proof Rating Strip */}
-        <div className="mt-4 sm:mt-6 text-center">
+        <div className="mt-6 sm:mt-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white border border-[#E2E8F0] text-[#0B1220] font-semibold text-[12.5px] sm:text-[13.5px] shadow-sm">
             <span>Rated 4.9/5 by 4,900+ clients</span>
             <div className="flex items-center gap-0.5 text-[#F59E0B]">
