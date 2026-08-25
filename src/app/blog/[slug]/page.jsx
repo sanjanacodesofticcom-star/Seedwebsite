@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, Calendar, Share2, CheckCircle2, Bookmark, MessageCircle } from 'lucide-react';
 import { fallbackPosts } from '@/data/blogFallback';
-import { getBlogPosts } from '@/sanity/client';
+import { getBlogPosts, getPostBySlug } from '@/sanity/client';
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -13,8 +13,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const posts = await getBlogPosts();
-  const post = posts.find(p => p.slug === params.slug) || fallbackPosts[0];
+  const post = await getPostBySlug(params.slug);
+  if (!post) {
+    return {
+      title: 'Blog Article — GetAseed Playbooks',
+    };
+  }
   return {
     title: `${post.title} — GetAseed Playbooks`,
     description: post.excerpt,
@@ -22,8 +26,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogPostPage({ params }) {
-  const posts = await getBlogPosts();
-  const post = posts.find(p => p.slug === params.slug) || fallbackPosts.find(p => p.slug === params.slug);
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     notFound();
