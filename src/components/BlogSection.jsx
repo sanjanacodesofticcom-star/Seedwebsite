@@ -5,27 +5,39 @@ import Image from 'next/image';
 import { Bookmark, MessageCircle, Eye, ArrowUpRight, BookOpen, Star, Sparkles } from 'lucide-react';
 import { getBlogPosts } from '@/sanity/client';
 
-export default function BlogSection() {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+export default function BlogSection({ initialPosts = [] }) {
+  const [posts, setPosts] = useState(initialPosts);
+  const [isLoading, setIsLoading] = useState(initialPosts.length === 0);
 
   useEffect(() => {
     async function loadSanityPosts() {
-      setIsLoading(true);
       try {
-        const data = await getBlogPosts();
-        if (data && Array.isArray(data)) {
-          setPosts(data);
-        } else {
-          setPosts([]);
+        // Fetch from internal proxy API route (zero CORS)
+        const res = await fetch('/api/blogs');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.posts && data.posts.length > 0) {
+            setPosts(data.posts);
+            setIsLoading(false);
+            return;
+          }
+        }
+      } catch (e) {
+        // fallback to direct client call
+      }
+
+      try {
+        const directData = await getBlogPosts();
+        if (directData && directData.length > 0) {
+          setPosts(directData);
         }
       } catch (err) {
         console.error('Failed to load Sanity posts:', err);
-        setPosts([]);
       } finally {
         setIsLoading(false);
       }
     }
+
     loadSanityPosts();
   }, []);
 
@@ -56,7 +68,7 @@ export default function BlogSection() {
         </div>
 
         {/* Loading State */}
-        {isLoading && (
+        {isLoading && posts.length === 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[1, 2, 3].map((i) => (
               <div key={i} className="rounded-[28px] bg-white border border-[#E2E8F0] p-6 h-[460px] animate-pulse flex flex-col justify-end">
@@ -91,7 +103,7 @@ export default function BlogSection() {
         )}
 
         {/* 3-Card Grid rendering ONLY Sanity Posts */}
-        {!isLoading && posts.length > 0 && (
+        {posts.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {posts.slice(0, 3).map((post) => (
               <Link
@@ -187,7 +199,7 @@ export default function BlogSection() {
         )}
 
         {/* Bottom Centered All Articles CTA */}
-        {!isLoading && posts.length > 0 && (
+        {posts.length > 0 && (
           <div className="mt-12 text-center">
             <Link
               href="/blog"

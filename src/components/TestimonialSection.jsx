@@ -8,8 +8,7 @@ import {
   Layers, 
   Zap, 
   BarChart3, 
-  Globe2,
-  Building2,
+  Globe2, 
   Star,
   ArrowUpRight
 } from 'lucide-react';
@@ -35,28 +34,39 @@ function renderHighlightedText(text, highlight) {
   );
 }
 
-export default function TestimonialSection() {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+export default function TestimonialSection({ initialTestimonials = [] }) {
+  const [items, setItems] = useState(initialTestimonials);
+  const [isLoading, setIsLoading] = useState(initialTestimonials.length === 0);
 
   useEffect(() => {
-    async function loadTestimonials() {
-      setIsLoading(true);
+    async function loadSanityTestimonials() {
       try {
-        const sanityData = await getTestimonials();
-        if (sanityData && Array.isArray(sanityData)) {
-          setItems(sanityData);
-        } else {
-          setItems([]);
+        const res = await fetch('/api/testimonials');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.testimonials && data.testimonials.length > 0) {
+            setItems(data.testimonials);
+            setIsLoading(false);
+            return;
+          }
         }
       } catch (e) {
-        console.error('Error loading Sanity testimonials:', e);
-        setItems([]);
+        // fallback
+      }
+
+      try {
+        const directData = await getTestimonials();
+        if (directData && directData.length > 0) {
+          setItems(directData);
+        }
+      } catch (err) {
+        console.error('Failed to load Sanity testimonials:', err);
       } finally {
         setIsLoading(false);
       }
     }
-    loadTestimonials();
+
+    loadSanityTestimonials();
   }, []);
 
   return (
@@ -106,7 +116,7 @@ export default function TestimonialSection() {
         </div>
 
         {/* Loading Skeleton */}
-        {isLoading && (
+        {isLoading && items.length === 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <div key={n} className="bg-white rounded-[26px] p-7 border border-[#E2E8F0] h-[260px] animate-pulse flex flex-col justify-between">
@@ -150,7 +160,7 @@ export default function TestimonialSection() {
         )}
 
         {/* 6-Card Grid rendering strictly Sanity Testimonials */}
-        {!isLoading && items.length > 0 && (
+        {items.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {items.map((item) => (
               <div

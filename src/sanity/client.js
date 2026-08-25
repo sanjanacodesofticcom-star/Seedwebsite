@@ -6,7 +6,7 @@ export const sanityConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '6sg9up19',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-03-01',
-  useCdn: false, // Set to false to ensure immediate updates when publishing in studio
+  useCdn: false, // Set to false for immediate live updates
 };
 
 export const client = createClient(sanityConfig);
@@ -44,6 +44,30 @@ export function parseSanityImageRef(source, projectId = '6sg9up19', dataset = 'p
     }
   }
   return '';
+}
+
+/**
+ * Direct REST query fallback with no-store caching
+ */
+export async function directSanityFetch(query, params = {}) {
+  const projectId = sanityConfig.projectId;
+  const dataset = sanityConfig.dataset;
+  const apiVersion = sanityConfig.apiVersion;
+  
+  let url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${encodeURIComponent(query)}`;
+  
+  if (params && Object.keys(params).length > 0) {
+    for (const [k, v] of Object.entries(params)) {
+      url += `&$${k}=${encodeURIComponent(JSON.stringify(v))}`;
+    }
+  }
+
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) {
+    throw new Error(`Sanity fetch failed with HTTP ${res.status}`);
+  }
+  const json = await res.json();
+  return json.result;
 }
 
 /**
@@ -158,18 +182,29 @@ function mapSanityTestimonial(t) {
 }
 
 /**
- * Fetch live posts from Sanity (projectId: 6sg9up19)
+ * Fetch live posts from Sanity with automatic REST fallback
  */
 export async function getBlogPosts() {
   try {
-    const posts = await client.fetch(POSTS_QUERY);
+    let posts = null;
+    try {
+      posts = await client.fetch(POSTS_QUERY);
+    } catch (e) {
+      // Fallback to direct REST API
+      posts = await directSanityFetch(POSTS_QUERY);
+    }
     if (!posts || !Array.isArray(posts)) {
       return [];
     }
     return posts.map(mapSanityPost);
   } catch (error) {
     console.error('Error fetching blogs from Sanity project 6sg9up19:', error.message);
-    return [];
+    try {
+      const direct = await directSanityFetch(POSTS_QUERY);
+      return (direct || []).map(mapSanityPost);
+    } catch (err) {
+      return [];
+    }
   }
 }
 
@@ -187,17 +222,27 @@ export async function getPostBySlug(slug) {
 }
 
 /**
- * Fetch live testimonials from Sanity (projectId: 6sg9up19)
+ * Fetch live testimonials from Sanity with automatic REST fallback
  */
 export async function getTestimonials() {
   try {
-    const items = await client.fetch(TESTIMONIALS_QUERY);
+    let items = null;
+    try {
+      items = await client.fetch(TESTIMONIALS_QUERY);
+    } catch (e) {
+      items = await directSanityFetch(TESTIMONIALS_QUERY);
+    }
     if (!items || !Array.isArray(items)) {
       return [];
     }
     return items.map(mapSanityTestimonial);
   } catch (error) {
     console.error('Error fetching testimonials from Sanity project 6sg9up19:', error.message);
-    return [];
+    try {
+      const direct = await directSanityFetch(TESTIMONIALS_QUERY);
+      return (direct || []).map(mapSanityTestimonial);
+    } catch (err) {
+      return [];
+    }
   }
 }

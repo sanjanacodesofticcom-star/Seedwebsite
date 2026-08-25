@@ -8,15 +8,25 @@ import ToolsIntegrationRow from '@/components/ToolsIntegrationRow';
 import TestimonialSection from '@/components/TestimonialSection';
 import FAQAccordion from '@/components/FAQAccordion';
 import { faqsData } from '@/data/faqs';
-import { ShieldCheck, ArrowRight, CheckCircle2, MessageSquare } from 'lucide-react';
+import { ShieldCheck, ArrowRight, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
+import { getBlogPosts, getTestimonials } from '@/sanity/client';
 
 export const metadata = {
   title: 'GetAseed — AI Chatbot & Conversational Commerce Automation',
   description: 'Boost your presence on WhatsApp, Facebook, and Instagram. Official Meta Cloud API partner with zero markup fees.',
 };
 
-export default function HomePage() {
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+export default async function HomePage() {
+  // Pre-fetch live Sanity posts and testimonials on the server for instant rendering
+  const [initialPosts, initialTestimonials] = await Promise.all([
+    getBlogPosts().catch(() => []),
+    getTestimonials().catch(() => [])
+  ]);
+
   return (
     <div className="bg-white">
       {/* 1. Brand Hero Section with Meta & WhatsApp Pill */}
@@ -34,8 +44,8 @@ export default function HomePage() {
       {/* 5. Interactive Dark AI Data Training Console */}
       <TrainAIAgentPanel />
 
-      {/* 6. Blog Section (Reference UI with Frosted Glass Overlay & Sanity Integration) */}
-      <BlogSection />
+      {/* 6. Blog Section (Live Sanity Posts with instant SSR pre-render) */}
+      <BlogSection initialPosts={initialPosts} />
 
       {/* 7. Our Promise to You */}
       <section className="section-major bg-white border-b border-[#E2E8F0]">
@@ -198,8 +208,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. Testimonial Section (Placed directly after Instant WhatsApp Connection) */}
-      <TestimonialSection />
+      {/* 10. Testimonial Section (Live Sanity Testimonials with instant SSR pre-render) */}
+      <TestimonialSection initialTestimonials={initialTestimonials} />
 
       {/* 11. FAQ Accordion */}
       <FAQAccordion items={faqsData.home} />
