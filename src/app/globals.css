@@ -84,8 +84,8 @@ body {
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
   position: relative;
 }
 
@@ -113,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .display-xl {
   font-family: var(--font-heading) !important;
-  font-size: clamp(38px, 5.5vw, 64px);
+  font-size: clamp(34px, 5.5vw, 64px);
   line-height: 1.08;
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -121,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .display-l {
   font-family: var(--font-heading) !important;
-  font-size: clamp(28px, 3.8vw, 44px);
+  font-size: clamp(26px, 3.8vw, 44px);
   line-height: 1.15;
   font-weight: 750;
   letter-spacing: -0.025em;
@@ -129,7 +129,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .display-m {
   font-family: var(--font-heading) !important;
-  font-size: clamp(22px, 2.2vw, 30px);
+  font-size: clamp(20px, 2.2vw, 30px);
   line-height: 1.25;
   font-weight: 700;
 }
@@ -198,12 +198,13 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--brand-lime) !important;
   color: var(--brand-ink) !important;
   font-family: var(--font-body) !important;
-  font-weight: 700;
+  font-weight: 750;
   font-size: 14.5px;
-  padding: 11px 24px;
+  padding: 12px 28px;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   text-decoration: none;
   transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -227,32 +228,34 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(0);
 }
 
-/* Secondary CTA */
+/* Secondary CTA (Sleek Clean Pill matching high-end UI) */
 .btn-secondary-brand,
 .btn-secondary {
   background-color: #FFFFFF;
-  border: 2px solid var(--brand-lime);
+  border: 1.5px solid #0B1220;
   color: var(--brand-ink);
   font-family: var(--font-body) !important;
-  font-weight: 700;
+  font-weight: 750;
   font-size: 14.5px;
-  padding: 10px 24px;
+  padding: 11.5px 28px;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   text-decoration: none;
   transition: all 180ms ease;
-  box-shadow: 0 2px 8px rgba(171, 239, 6, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   cursor: pointer;
 }
 
 .btn-secondary-brand:hover,
 .btn-secondary:hover {
-  background-color: var(--brand-lime);
-  color: var(--brand-ink);
+  background-color: #0B1220;
+  color: #FFFFFF;
+  border-color: #0B1220;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -4px rgba(171, 239, 6, 0.5);
+  box-shadow: 0 8px 20px -4px rgba(11, 18, 32, 0.25);
 }
 
 /* Arrow Badges */
@@ -284,15 +287,29 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Section Rhythm */
 .section-major {
-  padding-top: 96px;
-  padding-bottom: 96px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   position: relative;
 }
 
+@media (min-width: 768px) {
+  .section-major {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
 .section-compact {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 48px;
+  padding-bottom: 48px;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .section-compact {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
 
 /* Signature Tri-Channel Gradient Thread */
@@ -333,6 +350,41 @@ h1, h2, h3, h4, h5, h6 {
   scrollbar-width: none !important;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   AUTOMATIC HERO CARDS MARQUEE (FOR MOBILE VIEW)
+   ───────────────────────────────────────────────────────────── */
+@keyframes heroCardsMarqueeTrack {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.hero-cards-marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 16px;
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.hero-cards-marquee-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: heroCardsMarqueeTrack 26s linear infinite;
+  will-change: transform;
+}
+
+.hero-cards-marquee-container:hover .hero-cards-marquee-track,
+.hero-cards-marquee-container:active .hero-cards-marquee-track {
+  animation-play-state: paused;
+}
+
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -340,5 +392,9 @@ h1, h2, h3, h4, h5, h6 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .hero-cards-marquee-track {
+    animation: none !important;
+    overflow-x: auto !important;
   }
 }
