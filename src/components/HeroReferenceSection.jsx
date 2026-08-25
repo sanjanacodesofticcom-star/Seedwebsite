@@ -27,31 +27,26 @@ export default function HeroReferenceSection() {
 
       <div className="container-xl relative z-10">
         
-        {/* Top Eyebrow Capsule with Meta Icon + META Text and WhatsApp Icon + WHATSAPP Text */}
-        <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 rounded-full bg-white border border-[#E2E8F0] shadow-sm text-[#0B1220] hover:shadow-md transition-all">
-            {/* Meta Badge */}
-            <div className="flex items-center gap-1.5 shrink-0">
-              <MetaBrandIcon size={22} />
-              <span className="text-[12.5px] sm:text-[13px] font-extrabold tracking-tight text-[#0B1220] font-display">
-                META
-              </span>
-            </div>
+        {/* Dual Partner Capsules matching user reference image: [Meta Icon] Official META Cloud API  ×  [WhatsApp Icon] Official WhatsApp Business API */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8">
+          {/* Left Pill: Meta */}
+          <div className="inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 rounded-full bg-white border border-[#E2E8F0] shadow-sm hover:shadow-md transition-all">
+            <MetaBrandIcon size={20} />
+            <span className="text-[13px] sm:text-[14px] font-bold tracking-tight text-[#0066FF] font-display">
+              Official META Cloud API
+            </span>
+          </div>
 
-            <span className="h-3.5 w-px bg-[#CBD5E1]" />
+          {/* Cross / multiplier symbol */}
+          <span className="text-[#25D366] font-black text-[17px] select-none px-0.5">
+            ×
+          </span>
 
-            {/* WhatsApp Badge */}
-            <div className="flex items-center gap-1.5 shrink-0">
-              <WhatsAppBrandIcon size={20} />
-              <span className="text-[12.5px] sm:text-[13px] font-extrabold tracking-tight text-[#0B1220] font-display">
-                WHATSAPP
-              </span>
-            </div>
-
-            <span className="h-3.5 w-px bg-[#CBD5E1] hidden sm:inline" />
-
-            <span className="text-[12px] sm:text-[13px] font-bold tracking-tight text-[#475569] hidden sm:inline">
-              Official Cloud & Business API Partner
+          {/* Right Pill: WhatsApp */}
+          <div className="inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 rounded-full bg-white border border-[#E2E8F0] shadow-sm hover:shadow-md transition-all">
+            <WhatsAppBrandIcon size={19} />
+            <span className="text-[13px] sm:text-[14px] font-bold tracking-tight text-[#008037] font-display">
+              Official WhatsApp Business API
             </span>
           </div>
         </div>
