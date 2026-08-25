@@ -93,11 +93,11 @@ export default function SiteHeader() {
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-7" aria-label="Main Navigation">
             {/* Home Link */}
             <Link 
               href="/" 
-              className={`text-[14.5px] font-bold tracking-wide transition-colors py-1 relative ${
+              className={`text-[14px] font-bold tracking-wide transition-colors py-1 relative ${
                 pathname === '/' ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
               }`}
             >
@@ -116,7 +116,7 @@ export default function SiteHeader() {
                 type="button"
                 onClick={() => setChannelsOpen(!channelsOpen)}
                 onMouseEnter={() => setChannelsOpen(true)}
-                className={`flex items-center gap-1.5 text-[14.5px] font-bold tracking-wide transition-colors py-1 relative cursor-pointer ${
+                className={`flex items-center gap-1.5 text-[14px] font-bold tracking-wide transition-colors py-1 relative cursor-pointer ${
                   isChannelActive ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
                 }`}
                 aria-expanded={channelsOpen}
@@ -187,7 +187,7 @@ export default function SiteHeader() {
             {/* Pricing */}
             <Link 
               href="/pricing" 
-              className={`text-[14.5px] font-bold tracking-wide transition-colors py-1 relative ${
+              className={`text-[14px] font-bold tracking-wide transition-colors py-1 relative ${
                 pathname === '/pricing' ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
               }`}
             >
@@ -200,10 +200,26 @@ export default function SiteHeader() {
               )}
             </Link>
 
+            {/* Blog */}
+            <Link 
+              href="/blog" 
+              className={`text-[14px] font-bold tracking-wide transition-colors py-1 relative ${
+                pathname.startsWith('/blog') ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
+              }`}
+            >
+              BLOG
+              {pathname.startsWith('/blog') && (
+                <span 
+                  className="absolute bottom-[-10px] left-0 right-0 h-[2.5px] rounded-full" 
+                  style={{ background: 'var(--thread-gradient)' }} 
+                />
+              )}
+            </Link>
+
             {/* About Us */}
             <Link 
               href="/about-us" 
-              className={`text-[14.5px] font-bold tracking-wide transition-colors py-1 relative ${
+              className={`text-[14px] font-bold tracking-wide transition-colors py-1 relative ${
                 pathname === '/about-us' ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
               }`}
             >
@@ -219,7 +235,7 @@ export default function SiteHeader() {
             {/* Contact */}
             <Link 
               href="/contact" 
-              className={`text-[14.5px] font-bold tracking-wide transition-colors py-1 relative ${
+              className={`text-[14px] font-bold tracking-wide transition-colors py-1 relative ${
                 pathname === '/contact' ? 'text-[#0B1220]' : 'text-[#475569] hover:text-[#0B1220]'
               }`}
             >
@@ -267,10 +283,10 @@ export default function SiteHeader() {
             className="bg-white w-full max-w-[380px] h-[calc(100vh-80px)] ml-auto p-6 flex flex-col justify-between overflow-y-auto border-l border-[#E2E8F0] shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="space-y-4">
+            <div className="space-y-3">
               <Link
                 href="/"
-                className={`block px-4 py-3 rounded-[14px] font-bold text-[15px] ${
+                className={`block px-4 py-2.5 rounded-[14px] font-bold text-[15px] ${
                   pathname === '/' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F8FAFC]'
                 }`}
               >
@@ -288,11 +304,11 @@ export default function SiteHeader() {
                     <Link
                       key={ch.name}
                       href={ch.href}
-                      className={`flex items-center gap-3 px-4 py-2.5 rounded-[12px] text-[14.5px] font-semibold ${
+                      className={`flex items-center gap-3 px-4 py-2 rounded-[12px] text-[14px] font-semibold ${
                         pathname === ch.href ? 'bg-[#F8FAFC] text-[#0B1220]' : 'text-[#475569] hover:bg-[#F8FAFC]'
                       }`}
                     >
-                      <Icon size={24} />
+                      <Icon size={22} />
                       <span>{ch.name}</span>
                     </Link>
                   );
@@ -301,7 +317,7 @@ export default function SiteHeader() {
 
               <Link
                 href="/pricing"
-                className={`block px-4 py-3 rounded-[14px] font-bold text-[15px] ${
+                className={`block px-4 py-2.5 rounded-[14px] font-bold text-[15px] ${
                   pathname === '/pricing' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F8FAFC]'
                 }`}
               >
@@ -309,8 +325,17 @@ export default function SiteHeader() {
               </Link>
 
               <Link
+                href="/blog"
+                className={`block px-4 py-2.5 rounded-[14px] font-bold text-[15px] ${
+                  pathname.startsWith('/blog') ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F8FAFC]'
+                }`}
+              >
+                Blog & Insights
+              </Link>
+
+              <Link
                 href="/about-us"
-                className={`block px-4 py-3 rounded-[14px] font-bold text-[15px] ${
+                className={`block px-4 py-2.5 rounded-[14px] font-bold text-[15px] ${
                   pathname === '/about-us' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F8FAFC]'
                 }`}
               >
@@ -319,7 +344,7 @@ export default function SiteHeader() {
 
               <Link
                 href="/contact"
-                className={`block px-4 py-3 rounded-[14px] font-bold text-[15px] ${
+                className={`block px-4 py-2.5 rounded-[14px] font-bold text-[15px] ${
                   pathname === '/contact' ? 'bg-[#0B1220] text-white' : 'text-[#0B1220] hover:bg-[#F8FAFC]'
                 }`}
               >
@@ -327,7 +352,7 @@ export default function SiteHeader() {
               </Link>
             </div>
 
-            {/* Bottom Actions: All Brand Lime #ABEF06 CTAs */}
+            {/* Bottom Actions */}
             <div className="pt-6 border-t border-[#E2E8F0] space-y-3">
               <Link
                 href="/contact"

@@ -3,6 +3,7 @@ import SocialProofMarquee from '@/components/SocialProofMarquee';
 import SmartAutomationsSection from '@/components/SmartAutomationsSection';
 import ServicesReferenceGrid from '@/components/ServicesReferenceGrid';
 import TrainAIAgentPanel from '@/components/TrainAIAgentPanel';
+import BlogSection from '@/components/BlogSection';
 import ToolsIntegrationRow from '@/components/ToolsIntegrationRow';
 import FAQAccordion from '@/components/FAQAccordion';
 import { faqsData } from '@/data/faqs';
@@ -23,7 +24,7 @@ export default function HomePage() {
       {/* 2. Partner Logo Marquee: Automating Conversations with Global Scale */}
       <SocialProofMarquee />
 
-      {/* 3. Smart Automations for Growing Businesses (New Reference 6-Card Grid) */}
+      {/* 3. Smart Automations for Growing Businesses (Reference 6-Card Grid) */}
       <SmartAutomationsSection />
 
       {/* 4. Channels & Services Grid */}
@@ -41,7 +42,7 @@ export default function HomePage() {
               <span>Drive more Sales on Autopilot</span>
             </div>
 
-            <h2 className="text-[34px] sm:text-[46px] font-extrabold text-[#0B1220] tracking-tight leading-[1.14]">
+            <h2 className="text-[34px] sm:text-[46px] font-extrabold text-[#0B1220] tracking-tight leading-[1.14] font-display">
               Supercharge your lead generation
             </h2>
 
@@ -67,7 +68,7 @@ export default function HomePage() {
                 <div className="w-10 h-10 rounded-full bg-[#25D366]/15 text-[#25D366] flex items-center justify-center mb-4">
                   <CheckCircle2 size={20} />
                 </div>
-                <h4 className="text-[17px] font-bold text-[#0B1220] mb-2">
+                <h4 className="text-[17px] font-bold text-[#0B1220] mb-2 font-display">
                   Increase conversion rates to 90%
                 </h4>
                 <p className="text-[14px] text-[#64748B] leading-relaxed font-medium">
@@ -79,7 +80,7 @@ export default function HomePage() {
                 <div className="w-10 h-10 rounded-full bg-[#1877F2]/15 text-[#1877F2] flex items-center justify-center mb-4">
                   <CheckCircle2 size={20} />
                 </div>
-                <h4 className="text-[17px] font-bold text-[#0B1220] mb-2">
+                <h4 className="text-[17px] font-bold text-[#0B1220] mb-2 font-display">
                   Automatically respond to messages
                 </h4>
                 <p className="text-[14px] text-[#64748B] leading-relaxed font-medium">
@@ -91,7 +92,7 @@ export default function HomePage() {
                 <div className="w-10 h-10 rounded-full bg-[#962FBF]/15 text-[#962FBF] flex items-center justify-center mb-4">
                   <CheckCircle2 size={20} />
                 </div>
-                <h4 className="text-[17px] font-bold text-[#0B1220] mb-2">
+                <h4 className="text-[17px] font-bold text-[#0B1220] mb-2 font-display">
                   Scale your business effortlessly
                 </h4>
                 <p className="text-[14px] text-[#64748B] leading-relaxed font-medium">
@@ -103,7 +104,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. Our Promise to You */}
+      {/* 7. Blog Section (Reference UI with Frosted Glass Overlay & Sanity Integration) */}
+      <BlogSection />
+
+      {/* 8. Our Promise to You */}
       <section className="section-major bg-white border-b border-[#E2E8F0]">
         <div className="container-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -114,12 +118,12 @@ export default function HomePage() {
                 <span>Our User Agreement</span>
               </div>
 
-              <h2 className="text-[32px] sm:text-[40px] font-extrabold text-[#0B1220] tracking-tight leading-tight">
+              <h2 className="text-[32px] sm:text-[40px] font-extrabold text-[#0B1220] tracking-tight leading-tight font-display">
                 Clear words. <br />
                 Nothing is hidden.
               </h2>
 
-              <p className="text-[16px] text-[#475569] leading-relaxed">
+              <p className="text-[16px] text-[#475569] leading-relaxed font-medium">
                 The most important part of our user agreement, in plain language. We bring it to the surface here because your trust should begin before you sign up.
               </p>
 
@@ -142,10 +146,10 @@ export default function HomePage() {
                     01
                   </span>
                   <div>
-                    <h3 className="text-[18px] font-bold text-[#0B1220]">
+                    <h3 className="text-[18px] font-bold text-[#0B1220] font-display">
                       7 Days, completely free.
                     </h3>
-                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed">
+                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed font-medium">
                       Eligible businesses get 7 days of onboarding at no cost. There are no hidden fees during the trial period—what you see is exactly what you pay.
                     </p>
                   </div>
@@ -156,10 +160,10 @@ export default function HomePage() {
                     02
                   </span>
                   <div>
-                    <h3 className="text-[18px] font-bold text-[#0B1220]">
+                    <h3 className="text-[18px] font-bold text-[#0B1220] font-display">
                       Contract only if you're happy.
                     </h3>
-                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed">
+                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed font-medium">
                       Your paid engagement begins only after your 7-day trial ends and only with your written approval once you're satisfied.
                     </p>
                   </div>
@@ -170,10 +174,10 @@ export default function HomePage() {
                     03
                   </span>
                   <div>
-                    <h3 className="text-[18px] font-bold text-[#0B1220]">
+                    <h3 className="text-[18px] font-bold text-[#0B1220] font-display">
                       Your plan in 2–3 business days.
                     </h3>
-                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed">
+                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed font-medium">
                       After understanding your business, our strategists prepare a personalized growth plan within 2–3 business days.
                     </p>
                   </div>
@@ -184,10 +188,10 @@ export default function HomePage() {
                     04
                   </span>
                   <div>
-                    <h3 className="text-[18px] font-bold text-[#0B1220]">
+                    <h3 className="text-[18px] font-bold text-[#0B1220] font-display">
                       End-to-end encrypted.
                     </h3>
-                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed">
+                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed font-medium">
                       Your communication remains encrypted and secure. We never sell your business or customer data.
                     </p>
                   </div>
@@ -198,10 +202,10 @@ export default function HomePage() {
                     05
                   </span>
                   <div>
-                    <h3 className="text-[18px] font-bold text-[#0B1220]">
+                    <h3 className="text-[18px] font-bold text-[#0B1220] font-display">
                       Honest about results.
                     </h3>
-                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed">
+                    <p className="text-[14.5px] text-[#64748B] mt-1 leading-relaxed font-medium">
                       We never promise unrealistic growth. We promise transparency, measurable work, and a free month so you can judge the results yourself.
                     </p>
                   </div>
@@ -212,10 +216,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. Connect Your Tools Easily */}
+      {/* 9. Connect Your Tools Easily */}
       <ToolsIntegrationRow />
 
-      {/* 9. Direct WhatsApp CTA Banner */}
+      {/* 10. Direct WhatsApp CTA Banner */}
       <section className="section-compact bg-white">
         <div className="container-xl">
           <div className="bg-[#0B1220] rounded-[28px] p-8 sm:p-14 text-white relative overflow-hidden border border-[#1E293B] shadow-2xl">
@@ -230,11 +234,11 @@ export default function HomePage() {
                 <span className="caption-eyebrow text-[#8891A3] text-[12px]">Instant WhatsApp Connection</span>
               </div>
 
-              <h2 className="text-[28px] sm:text-[38px] font-bold text-white tracking-tight leading-tight">
+              <h2 className="text-[28px] sm:text-[38px] font-bold text-white tracking-tight leading-tight font-display">
                 Capture, Engage & Support Your Customers Across Platforms
               </h2>
 
-              <p className="text-[16px] text-[#94A3B8] leading-relaxed">
+              <p className="text-[16px] text-[#94A3B8] leading-relaxed font-medium">
                 Connect your WhatsApp Business API in minutes and begin automating sales with zero commission markups.
               </p>
 
@@ -264,7 +268,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. FAQ Accordion */}
+      {/* 11. FAQ Accordion */}
       <FAQAccordion items={faqsData.home} />
     </div>
   );
