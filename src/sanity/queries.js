@@ -32,3 +32,19 @@ export const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug][0
   featuredBlog,
   body
 }`;
+
+export const TESTIMONIALS_QUERY = `*[_type == "testimonial" && active != false] | order(featured desc, displayOrder asc, _createdAt desc) {
+  _id,
+  name,
+  role,
+  handle,
+  avatar,
+  testimonial,
+  highlightText,
+  companyName,
+  companyLogo,
+  date,
+  featured,
+  displayOrder,
+  active
+}`;

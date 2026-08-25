@@ -1,6 +1,6 @@
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import { POSTS_QUERY, POST_BY_SLUG_QUERY } from './queries';
+import { POSTS_QUERY, POST_BY_SLUG_QUERY, TESTIMONIALS_QUERY } from './queries';
 
 export const sanityConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '6sg9up19',
@@ -136,8 +136,29 @@ function mapSanityPost(p) {
   };
 }
 
+function mapSanityTestimonial(t) {
+  const avatarUrl = urlFor(t.avatar) || '/images/avatars/avatar-1.jpg';
+  const logoUrl = urlFor(t.companyLogo) || '';
+
+  return {
+    id: t._id,
+    name: t.name || 'Anonymous Customer',
+    role: t.role || 'Customer',
+    handle: t.handle || '',
+    avatar: avatarUrl,
+    testimonial: t.testimonial || '',
+    highlightText: t.highlightText || '',
+    companyName: t.companyName || 'Company',
+    companyLogo: logoUrl,
+    date: t.date || 'Recent',
+    featured: Boolean(t.featured),
+    displayOrder: t.displayOrder ?? 0,
+    active: t.active !== false
+  };
+}
+
 /**
- * Fetch ONLY live posts from Sanity (projectId: 6sg9up19)
+ * Fetch live posts from Sanity (projectId: 6sg9up19)
  */
 export async function getBlogPosts() {
   try {
@@ -162,5 +183,21 @@ export async function getPostBySlug(slug) {
   } catch (error) {
     console.error('Error fetching post by slug from Sanity:', error.message);
     return null;
+  }
+}
+
+/**
+ * Fetch live testimonials from Sanity (projectId: 6sg9up19)
+ */
+export async function getTestimonials() {
+  try {
+    const items = await client.fetch(TESTIMONIALS_QUERY);
+    if (!items || !Array.isArray(items)) {
+      return [];
+    }
+    return items.map(mapSanityTestimonial);
+  } catch (error) {
+    console.error('Error fetching testimonials from Sanity project 6sg9up19:', error.message);
+    return [];
   }
 }

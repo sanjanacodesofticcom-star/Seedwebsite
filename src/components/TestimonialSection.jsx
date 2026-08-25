@@ -1,121 +1,122 @@
 'use client';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { 
-  ArrowUpRight, 
   Sparkles, 
   Send, 
   Layers, 
   Zap, 
   BarChart3, 
-  ShieldCheck, 
-  Flame, 
-  Rocket, 
-  Heart,
-  Globe2
+  Globe2,
+  Building2
 } from 'lucide-react';
-import { MetaBrandIcon, ShopifyBrandIcon, WhatsAppBrandIcon } from './BrandIcons';
+import { getTestimonials } from '@/sanity/client';
 
-const testimonials = [
+const fallbackTestimonials = [
   {
     name: 'Sarah Smith',
     handle: '@sarah.smith',
     role: 'UX Designer',
     avatar: '/images/avatars/avatar-1.jpg',
-    content: (
-      <>
-        We recovered <strong className="text-[#0B1220] font-bold">$42,000 in abandoned carts</strong> in our first 30 days using GetAseed&apos;s WhatsApp Cloud API. 🚀
-        <br /><br />
-        The automated recovery flows run on autopilot without extra team overhead!
-      </>
-    ),
-    company: 'Invoice2go',
-    companyIcon: Send,
-    date: 'Nov 20, 2024',
-    badgeColor: 'bg-[#F1F5F9] text-[#475569]'
+    testimonial: 'We recovered $42,000 in abandoned carts in our first 30 days using GetAseed\'s WhatsApp Cloud API. 🚀\n\nThe automated recovery flows run on autopilot without extra team overhead!',
+    highlightText: '$42,000 in abandoned carts',
+    companyName: 'Invoice2go',
+    companyLogo: '',
+    date: 'Nov 20, 2024'
   },
   {
     name: 'Fig Nelson',
     handle: '@nelson.svg',
     role: 'Co-Founder',
     avatar: '/images/avatars/avatar-2.jpg',
-    content: (
-      <>
-        Training the AI chatbot with our <strong className="text-[#0B1220] font-bold">product catalog and FAQs</strong> took less than 10 minutes. It resolves 85% of inquiries instantly. 🔥
-      </>
-    ),
-    company: 'veroxfloor',
-    companyIcon: Sparkles,
-    date: 'Jun 24, 2024',
-    badgeColor: 'bg-[#F1F5F9] text-[#475569]'
+    testimonial: 'Training the AI chatbot with our product catalog and FAQs took less than 10 minutes. It resolves 85% of inquiries instantly. 🔥',
+    highlightText: 'product catalog and FAQs',
+    companyName: 'veroxfloor',
+    companyLogo: '',
+    date: 'Jun 24, 2024'
   },
   {
     name: 'Elena Rostova',
     handle: '@elena.growth',
     role: 'Jr. Designer',
     avatar: '/images/avatars/avatar-3.jpg',
-    content: (
-      <>
-        Our Instagram DM to WhatsApp checkout funnel <strong className="text-[#0B1220] font-bold">jumped by 4.2x</strong>. The 1-click Shopify catalog sync is seamless. ✨
-        <br /><br />
-        Customers love the instant checkout replies. 😇
-      </>
-    ),
-    company: 'RPUBLICA',
-    companyIcon: Globe2,
-    date: 'May 8, 2024',
-    badgeColor: 'bg-[#F1F5F9] text-[#475569]'
+    testimonial: 'Our Instagram DM to WhatsApp checkout funnel jumped by 4.2x. The 1-click Shopify catalog sync is seamless. ✨\n\nCustomers love the instant checkout replies. 😇',
+    highlightText: 'jumped by 4.2x',
+    companyName: 'RPUBLICA',
+    companyLogo: '',
+    date: 'May 8, 2024'
   },
   {
     name: 'Fletch Skinner',
     handle: '@fletch06',
     role: 'Developer',
     avatar: '/images/avatars/avatar-4.jpg',
-    content: (
-      <>
-        The direct <strong className="text-[#0B1220] font-bold">Meta Cloud API connection</strong> with zero markup fees saved our agency over $1,200 every month. 🧡
-      </>
-    ),
-    company: 'Amplitude',
-    companyIcon: BarChart3,
-    date: 'Dec 12, 2024',
-    badgeColor: 'bg-[#F1F5F9] text-[#475569]'
+    testimonial: 'The direct Meta Cloud API connection with zero markup fees saved our agency over $1,200 every month. 🧡',
+    highlightText: 'Meta Cloud API connection',
+    companyName: 'Amplitude',
+    companyLogo: '',
+    date: 'Dec 12, 2024'
   },
   {
     name: 'Alan Fresco',
     handle: '@frescoalan0',
     role: 'Product Manager',
     avatar: '/images/avatars/avatar-5.jpg',
-    content: (
-      <>
-        Managing WhatsApp, Instagram, and Facebook Messenger from <strong className="text-[#0B1220] font-bold">a single unified AI inbox</strong> saved our support team 20+ hours weekly. 🎉
-      </>
-    ),
-    company: 'XPENG',
-    companyIcon: Zap,
-    date: 'Feb 12, 2024',
-    badgeColor: 'bg-[#F1F5F9] text-[#475569]'
+    testimonial: 'Managing WhatsApp, Instagram, and Facebook Messenger from a single unified AI inbox saved our support team 20+ hours weekly. 🎉',
+    highlightText: 'a single unified AI inbox',
+    companyName: 'XPENG',
+    companyLogo: '',
+    date: 'Feb 12, 2024'
   },
   {
     name: 'Marcus Chen',
     handle: '@marcus.scale',
     role: 'Accountant',
     avatar: '/images/avatars/avatar-1.jpg',
-    content: (
-      <>
-        Automated order confirmation and shipping tracking messages achieved an <strong className="text-[#0B1220] font-bold">open rate of 97%</strong>. 🧡
-        <br /><br />
-        It completely outperformed all our legacy SMS campaigns.
-      </>
-    ),
-    company: 'Invoice2go',
-    companyIcon: Send,
-    date: 'Dec 12, 2024',
-    badgeColor: 'bg-[#F1F5F9] text-[#475569]'
+    testimonial: 'Automated order confirmation and shipping tracking messages achieved an open rate of 97%. 🧡\n\nIt completely outperformed all our legacy SMS campaigns.',
+    highlightText: 'open rate of 97%',
+    companyName: 'Invoice2go',
+    companyLogo: '',
+    date: 'Dec 12, 2024'
   }
 ];
 
+function renderHighlightedText(text, highlight) {
+  if (!highlight || !text.includes(highlight)) {
+    return (
+      <span className="whitespace-pre-line">
+        {text}
+      </span>
+    );
+  }
+
+  const parts = text.split(highlight);
+  return (
+    <span className="whitespace-pre-line">
+      {parts[0]}
+      <strong className="text-[#0B1220] font-bold">{highlight}</strong>
+      {parts.slice(1).join(highlight)}
+    </span>
+  );
+}
+
 export default function TestimonialSection() {
+  const [items, setItems] = useState(fallbackTestimonials);
+
+  useEffect(() => {
+    async function loadTestimonials() {
+      try {
+        const sanityData = await getTestimonials();
+        if (sanityData && sanityData.length > 0) {
+          setItems(sanityData);
+        }
+      } catch (e) {
+        console.warn('Error loading Sanity testimonials:', e);
+      }
+    }
+    loadTestimonials();
+  }, []);
+
   return (
     <section className="section-major bg-[#FAF7F2] border-b border-[#E2E8F0] relative overflow-hidden">
       {/* Soft Ambient Warm Glow matching reference UI */}
@@ -164,11 +165,10 @@ export default function TestimonialSection() {
 
         {/* 6-Card Grid matching reference card structure */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {testimonials.map((item, index) => {
-            const IconComp = item.companyIcon;
+          {items.map((item, index) => {
             return (
               <div
-                key={index}
+                key={item.id || index}
                 className="bg-white rounded-[26px] p-6 sm:p-7 border border-[#E2E8F0] shadow-[0_4px_20px_-4px_rgba(11,18,32,0.05)] hover:shadow-[0_12px_30px_-4px_rgba(11,18,32,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
               >
                 {/* 1. Card Top: Avatar + Name & Handle + Role Badge */}
@@ -177,7 +177,7 @@ export default function TestimonialSection() {
                     <div className="flex items-center gap-3">
                       <div className="w-11 h-11 rounded-full overflow-hidden relative border border-[#E2E8F0] shrink-0 bg-[#F1F5F9]">
                         <Image
-                          src={item.avatar}
+                          src={item.avatar || '/images/avatars/avatar-1.jpg'}
                           alt={item.name}
                           fill
                           className="object-cover"
@@ -187,30 +187,45 @@ export default function TestimonialSection() {
                         <h4 className="text-[15px] font-extrabold text-[#0B1220] leading-snug">
                           {item.name}
                         </h4>
-                        <span className="text-[12px] text-[#94A3B8] font-mono">
-                          {item.handle}
-                        </span>
+                        {item.handle && (
+                          <span className="text-[12px] text-[#94A3B8] font-mono">
+                            {item.handle}
+                          </span>
+                        )}
                       </div>
                     </div>
 
                     {/* Role Pill Badge */}
-                    <span className="px-3 py-1 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] text-[#475569] text-[11.5px] font-bold shrink-0">
-                      {item.role}
-                    </span>
+                    {item.role && (
+                      <span className="px-3 py-1 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] text-[#475569] text-[11.5px] font-bold shrink-0">
+                        {item.role}
+                      </span>
+                    )}
                   </div>
 
-                  {/* 2. Card Middle: Testimonial Text */}
+                  {/* 2. Card Middle: Testimonial Text with optional Highlight */}
                   <div className="text-[14.5px] text-[#475569] leading-relaxed font-medium mb-6">
-                    {item.content}
+                    {renderHighlightedText(item.testimonial, item.highlightText)}
                   </div>
                 </div>
 
-                {/* 3. Card Bottom: Company Name + Icon Tag + Date */}
+                {/* 3. Card Bottom: Company Name + Icon/Logo Tag + Date */}
                 <div className="pt-4 border-t border-[#F1F5F9] flex items-center justify-between text-[#64748B]">
                   <div className="flex items-center gap-2">
-                    <IconComp size={15} className="text-[#0B1220]" />
+                    {item.companyLogo ? (
+                      <div className="w-4 h-4 relative shrink-0">
+                        <Image
+                          src={item.companyLogo}
+                          alt={item.companyName}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <Send size={14} className="text-[#0B1220]" />
+                    )}
                     <span className="text-[13px] font-extrabold text-[#0B1220] tracking-tight font-display">
-                      {item.company}
+                      {item.companyName}
                     </span>
                   </div>
 
