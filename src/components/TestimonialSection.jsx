@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Sparkles, 
   Send, 
@@ -8,80 +9,14 @@ import {
   Zap, 
   BarChart3, 
   Globe2,
-  Building2
+  Building2,
+  Star,
+  ArrowUpRight
 } from 'lucide-react';
 import { getTestimonials } from '@/sanity/client';
 
-const fallbackTestimonials = [
-  {
-    name: 'Sarah Smith',
-    handle: '@sarah.smith',
-    role: 'UX Designer',
-    avatar: '/images/avatars/avatar-1.jpg',
-    testimonial: 'We recovered $42,000 in abandoned carts in our first 30 days using GetAseed\'s WhatsApp Cloud API. 🚀\n\nThe automated recovery flows run on autopilot without extra team overhead!',
-    highlightText: '$42,000 in abandoned carts',
-    companyName: 'Invoice2go',
-    companyLogo: '',
-    date: 'Nov 20, 2024'
-  },
-  {
-    name: 'Fig Nelson',
-    handle: '@nelson.svg',
-    role: 'Co-Founder',
-    avatar: '/images/avatars/avatar-2.jpg',
-    testimonial: 'Training the AI chatbot with our product catalog and FAQs took less than 10 minutes. It resolves 85% of inquiries instantly. 🔥',
-    highlightText: 'product catalog and FAQs',
-    companyName: 'veroxfloor',
-    companyLogo: '',
-    date: 'Jun 24, 2024'
-  },
-  {
-    name: 'Elena Rostova',
-    handle: '@elena.growth',
-    role: 'Jr. Designer',
-    avatar: '/images/avatars/avatar-3.jpg',
-    testimonial: 'Our Instagram DM to WhatsApp checkout funnel jumped by 4.2x. The 1-click Shopify catalog sync is seamless. ✨\n\nCustomers love the instant checkout replies. 😇',
-    highlightText: 'jumped by 4.2x',
-    companyName: 'RPUBLICA',
-    companyLogo: '',
-    date: 'May 8, 2024'
-  },
-  {
-    name: 'Fletch Skinner',
-    handle: '@fletch06',
-    role: 'Developer',
-    avatar: '/images/avatars/avatar-4.jpg',
-    testimonial: 'The direct Meta Cloud API connection with zero markup fees saved our agency over $1,200 every month. 🧡',
-    highlightText: 'Meta Cloud API connection',
-    companyName: 'Amplitude',
-    companyLogo: '',
-    date: 'Dec 12, 2024'
-  },
-  {
-    name: 'Alan Fresco',
-    handle: '@frescoalan0',
-    role: 'Product Manager',
-    avatar: '/images/avatars/avatar-5.jpg',
-    testimonial: 'Managing WhatsApp, Instagram, and Facebook Messenger from a single unified AI inbox saved our support team 20+ hours weekly. 🎉',
-    highlightText: 'a single unified AI inbox',
-    companyName: 'XPENG',
-    companyLogo: '',
-    date: 'Feb 12, 2024'
-  },
-  {
-    name: 'Marcus Chen',
-    handle: '@marcus.scale',
-    role: 'Accountant',
-    avatar: '/images/avatars/avatar-1.jpg',
-    testimonial: 'Automated order confirmation and shipping tracking messages achieved an open rate of 97%. 🧡\n\nIt completely outperformed all our legacy SMS campaigns.',
-    highlightText: 'open rate of 97%',
-    companyName: 'Invoice2go',
-    companyLogo: '',
-    date: 'Dec 12, 2024'
-  }
-];
-
 function renderHighlightedText(text, highlight) {
+  if (!text) return null;
   if (!highlight || !text.includes(highlight)) {
     return (
       <span className="whitespace-pre-line">
@@ -101,17 +36,24 @@ function renderHighlightedText(text, highlight) {
 }
 
 export default function TestimonialSection() {
-  const [items, setItems] = useState(fallbackTestimonials);
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function loadTestimonials() {
+      setIsLoading(true);
       try {
         const sanityData = await getTestimonials();
-        if (sanityData && sanityData.length > 0) {
+        if (sanityData && Array.isArray(sanityData)) {
           setItems(sanityData);
+        } else {
+          setItems([]);
         }
       } catch (e) {
-        console.warn('Error loading Sanity testimonials:', e);
+        console.error('Error loading Sanity testimonials:', e);
+        setItems([]);
+      } finally {
+        setIsLoading(false);
       }
     }
     loadTestimonials();
@@ -163,14 +105,68 @@ export default function TestimonialSection() {
           </div>
         </div>
 
-        {/* 6-Card Grid matching reference card structure */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {items.map((item, index) => {
-            return (
+        {/* Loading Skeleton */}
+        {isLoading && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div key={n} className="bg-white rounded-[26px] p-7 border border-[#E2E8F0] h-[260px] animate-pulse flex flex-col justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-full bg-[#E2E8F0]"></div>
+                  <div className="space-y-2">
+                    <div className="w-24 h-4 bg-[#E2E8F0] rounded"></div>
+                    <div className="w-16 h-3 bg-[#E2E8F0] rounded"></div>
+                  </div>
+                </div>
+                <div className="space-y-2 my-4">
+                  <div className="w-full h-4 bg-[#E2E8F0] rounded"></div>
+                  <div className="w-4/5 h-4 bg-[#E2E8F0] rounded"></div>
+                </div>
+                <div className="h-4 bg-[#E2E8F0] rounded w-1/3"></div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Empty State if 0 testimonials in Sanity Studio */}
+        {!isLoading && items.length === 0 && (
+          <div className="text-center py-16 bg-white rounded-[28px] border border-[#E2E8F0] p-8 max-w-xl mx-auto shadow-sm">
+            <div className="w-14 h-14 rounded-full bg-[#101B33] flex items-center justify-center mx-auto mb-4 text-[#ABEF06]">
+              <Sparkles size={24} />
+            </div>
+            <h3 className="text-[22px] font-extrabold text-[#0B1220] mb-2 font-display">
+              No Published Testimonials Yet
+            </h3>
+            <p className="text-[15px] text-[#64748B] mb-6 leading-relaxed font-medium">
+              Open Sanity Studio to add and publish customer reviews, founder avatars, and ratings.
+            </p>
+            <Link
+              href="/studio"
+              className="btn-lime text-[14.5px] font-bold inline-flex items-center gap-2"
+            >
+              <span>OPEN SANITY STUDIO</span>
+              <ArrowUpRight size={16} />
+            </Link>
+          </div>
+        )}
+
+        {/* 6-Card Grid rendering strictly Sanity Testimonials */}
+        {!isLoading && items.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+            {items.map((item) => (
               <div
-                key={item.id || index}
-                className="bg-white rounded-[26px] p-6 sm:p-7 border border-[#E2E8F0] shadow-[0_4px_20px_-4px_rgba(11,18,32,0.05)] hover:shadow-[0_12px_30px_-4px_rgba(11,18,32,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                key={item.id}
+                className="bg-white rounded-[26px] p-6 sm:p-7 border border-[#E2E8F0] shadow-[0_4px_20px_-4px_rgba(11,18,32,0.05)] hover:shadow-[0_12px_30px_-4px_rgba(11,18,32,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
               >
+                {/* Optional Featured Pill on top right */}
+                {item.featured && (
+                  <div className="absolute top-3 right-4 z-10">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ABEF06]/30 text-[#0B1220] text-[10.5px] font-bold border border-[#ABEF06]">
+                      <Star size={10} fill="#0B1220" />
+                      <span>Featured</span>
+                    </span>
+                  </div>
+                )}
+
                 {/* 1. Card Top: Avatar + Name & Handle + Role Badge */}
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-5">
@@ -196,8 +192,13 @@ export default function TestimonialSection() {
                     </div>
 
                     {/* Role Pill Badge */}
-                    {item.role && (
+                    {item.role && !item.featured && (
                       <span className="px-3 py-1 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] text-[#475569] text-[11.5px] font-bold shrink-0">
+                        {item.role}
+                      </span>
+                    )}
+                    {item.role && item.featured && (
+                      <span className="px-3 py-1 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] text-[#475569] text-[11.5px] font-bold shrink-0 mt-5 sm:mt-0">
                         {item.role}
                       </span>
                     )}
@@ -235,9 +236,9 @@ export default function TestimonialSection() {
                 </div>
 
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
 
       </div>
     </section>
