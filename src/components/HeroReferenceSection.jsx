@@ -12,7 +12,7 @@ import {
   Activity,
   Bot
 } from 'lucide-react';
-import { WhatsAppBrandIcon, InstagramBrandIcon, FacebookBrandIcon } from './BrandIcons';
+import { WhatsAppBrandIcon, InstagramBrandIcon, FacebookBrandIcon, MetaBrandIcon } from './BrandIcons';
 
 export default function HeroReferenceSection() {
   return (
@@ -27,11 +27,15 @@ export default function HeroReferenceSection() {
 
       <div className="container-xl relative z-10">
         
-        {/* Top Eyebrow Pill */}
+        {/* Top Eyebrow Capsule with Official Meta & WhatsApp Icons */}
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-sm text-[#0B1220]">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ABEF06] animate-pulse border border-[#91D000]" />
-            <span className="text-[12px] sm:text-[13px] font-mono font-bold tracking-wide uppercase text-[#0B1220]">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-[#E2E8F0] shadow-sm text-[#0B1220] hover:shadow-md transition-all">
+            <div className="flex items-center gap-1.5 shrink-0">
+              <MetaBrandIcon size={20} />
+              <WhatsAppBrandIcon size={20} />
+            </div>
+            <span className="h-3.5 w-px bg-[#E2E8F0]" />
+            <span className="text-[12px] sm:text-[13px] font-bold tracking-tight text-[#0B1220]">
               Official META Cloud & WhatsApp Business API
             </span>
           </div>
@@ -66,18 +70,18 @@ export default function HeroReferenceSection() {
             href="https://chat.getaseed.com/register"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-lime text-[15px] shadow-md font-bold"
+            className="btn-lime text-[14.5px] font-bold shadow-md"
           >
             <span>GET STARTED</span>
             <span className="arrow-circle-dark">↗</span>
           </a>
         </div>
 
-        {/* 3D Perspective Curved Arc of Floating Product Cards */}
-        <div className="perspective-container relative max-w-6xl mx-auto pt-2 pb-6">
-          <div className="flex items-center justify-center gap-3 sm:gap-4 lg:gap-5 overflow-x-auto lg:overflow-visible pb-6 px-2 no-scrollbar">
+        {/* 3D Perspective Curved Arc of Cards */}
+        <div className="perspective-container max-w-6xl mx-auto px-2 py-4">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 lg:gap-5 overflow-x-auto pb-4 pt-2 no-scrollbar">
             
-            {/* Card 1: Left Wing - Performance (WhatsApp Green Accent) */}
+            {/* Card 1: Left Wing - System Performance (WhatsApp Green Accent) */}
             <div 
               className="card-fan-item w-[210px] sm:w-[230px] lg:w-[240px] shrink-0 bg-white text-[#0B1220] rounded-[24px] p-5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.12)] border border-[#E2E8F0]"
               style={{
@@ -195,7 +199,7 @@ export default function HeroReferenceSection() {
               <div className="text-[13px] font-bold text-[#0B1220] mb-2">
                 Key Decision Flow
               </div>
-              {/* Mini SVG Trend Line with Tri-Channel Brand Gradient */}
+              {/* Mini SVG Trend Line */}
               <div className="h-12 w-full mb-3">
                 <svg viewBox="0 0 100 40" className="w-full h-full overflow-visible">
                   <path

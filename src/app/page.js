@@ -1,5 +1,6 @@
 import HeroReferenceSection from '@/components/HeroReferenceSection';
 import SocialProofMarquee from '@/components/SocialProofMarquee';
+import SmartAutomationsSection from '@/components/SmartAutomationsSection';
 import ServicesReferenceGrid from '@/components/ServicesReferenceGrid';
 import TrainAIAgentPanel from '@/components/TrainAIAgentPanel';
 import ToolsIntegrationRow from '@/components/ToolsIntegrationRow';
@@ -16,19 +17,22 @@ export const metadata = {
 export default function HomePage() {
   return (
     <div className="bg-white">
-      {/* 1. Brand Hero Section */}
+      {/* 1. Brand Hero Section with Meta & WhatsApp Pill */}
       <HeroReferenceSection />
 
-      {/* 2. Partner Logo Marquee */}
+      {/* 2. Partner Logo Marquee: Automating Conversations with Global Scale */}
       <SocialProofMarquee />
 
-      {/* 3. Services & Automation Grid */}
+      {/* 3. Smart Automations for Growing Businesses (New Reference 6-Card Grid) */}
+      <SmartAutomationsSection />
+
+      {/* 4. Channels & Services Grid */}
       <ServicesReferenceGrid />
 
-      {/* 4. Interactive Dark AI Data Training Console */}
+      {/* 5. Interactive Dark AI Data Training Console */}
       <TrainAIAgentPanel />
 
-      {/* 5. Drive More Sales on Autopilot (Clean, Centered Lead Generation Section) */}
+      {/* 6. Drive More Sales on Autopilot (Clean, Centered Lead Generation Section) */}
       <section className="section-major bg-[#F8FAFC] border-y border-[#E2E8F0]">
         <div className="container-xl">
           <div className="max-w-4xl mx-auto text-center space-y-6">
@@ -99,7 +103,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Our Promise to You */}
+      {/* 7. Our Promise to You */}
       <section className="section-major bg-white border-b border-[#E2E8F0]">
         <div className="container-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -208,10 +212,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. Connect Your Tools Easily */}
+      {/* 8. Connect Your Tools Easily */}
       <ToolsIntegrationRow />
 
-      {/* 8. Direct WhatsApp CTA Banner */}
+      {/* 9. Direct WhatsApp CTA Banner */}
       <section className="section-compact bg-white">
         <div className="container-xl">
           <div className="bg-[#0B1220] rounded-[28px] p-8 sm:p-14 text-white relative overflow-hidden border border-[#1E293B] shadow-2xl">
@@ -260,7 +264,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. FAQ Accordion */}
+      {/* 10. FAQ Accordion */}
       <FAQAccordion items={faqsData.home} />
     </div>
   );
