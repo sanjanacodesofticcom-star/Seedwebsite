@@ -16,10 +16,10 @@ import { WhatsAppBrandIcon, InstagramBrandIcon, FacebookBrandIcon, MetaBrandIcon
 
 export default function HeroReferenceSection() {
   return (
-    <section className="brand-hero-bg pt-12 sm:pt-16 pb-20 sm:pb-28 text-[#0B1220] relative">
+    <section className="brand-hero-bg pt-12 sm:pt-16 pb-20 sm:pb-28 text-[#0B1220] relative overflow-hidden">
       {/* Subtle Brand Radial Glow */}
       <div 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] pointer-events-none opacity-60 blur-3xl"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[600px] pointer-events-none opacity-60 blur-3xl"
         style={{
           background: 'radial-gradient(circle, rgba(171,239,6,0.18) 0%, rgba(24,119,242,0.12) 40%, rgba(150,47,191,0.06) 70%, transparent 100%)'
         }}
@@ -77,13 +77,13 @@ export default function HeroReferenceSection() {
           </a>
         </div>
 
-        {/* 3D Perspective Curved Arc of Cards */}
-        <div className="perspective-container max-w-6xl mx-auto px-2 py-4">
-          <div className="flex items-center justify-center gap-3 sm:gap-4 lg:gap-5 overflow-x-auto pb-4 pt-2 no-scrollbar">
+        {/* 3D Perspective Curved Arc of Cards - Zero Scrollbar, Fully Responsive */}
+        <div className="perspective-container max-w-[1380px] mx-auto px-2 py-4 overflow-hidden">
+          <div className="flex items-center justify-center gap-2.5 sm:gap-3.5 lg:gap-4.5 pb-2 pt-2 overflow-hidden">
             
             {/* Card 1: Left Wing - System Performance (WhatsApp Green Accent) */}
             <div 
-              className="card-fan-item w-[210px] sm:w-[230px] lg:w-[240px] shrink-0 bg-white text-[#0B1220] rounded-[24px] p-5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.12)] border border-[#E2E8F0]"
+              className="card-fan-item w-[190px] sm:w-[210px] lg:w-[230px] shrink-0 bg-white text-[#0B1220] rounded-[24px] p-5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.12)] border border-[#E2E8F0] hidden sm:block"
               style={{
                 transform: 'rotateY(14deg) rotateZ(-2.5deg) scale(0.92)',
                 transformOrigin: 'right center'
@@ -113,7 +113,7 @@ export default function HeroReferenceSection() {
 
             {/* Card 2: Left Mid - Strategic Metrics (Facebook Blue Accent) */}
             <div 
-              className="card-fan-item w-[220px] sm:w-[240px] lg:w-[250px] shrink-0 bg-white text-[#0B1220] rounded-[24px] p-5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.12)] border border-[#E2E8F0]"
+              className="card-fan-item w-[200px] sm:w-[220px] lg:w-[240px] shrink-0 bg-white text-[#0B1220] rounded-[24px] p-5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.12)] border border-[#E2E8F0]"
               style={{
                 transform: 'rotateY(7deg) rotateZ(-1deg) scale(0.97)',
                 transformOrigin: 'right center'
@@ -138,7 +138,7 @@ export default function HeroReferenceSection() {
 
             {/* Card 3: CENTER HERO CARD - Deep Ink with Electric Lime Orb Centerpiece */}
             <div 
-              className="card-fan-item w-[250px] sm:w-[280px] lg:w-[310px] shrink-0 bg-[#0B1220] text-white rounded-[28px] p-6 shadow-[0_25px_60px_-10px_rgba(11,18,32,0.4)] border-2 border-[#1E293B] relative z-20"
+              className="card-fan-item w-[240px] sm:w-[270px] lg:w-[300px] shrink-0 bg-[#0B1220] text-white rounded-[28px] p-6 shadow-[0_25px_60px_-10px_rgba(11,18,32,0.4)] border-2 border-[#1E293B] relative z-20"
               style={{
                 transform: 'scale(1.06)',
               }}
@@ -165,7 +165,7 @@ export default function HeroReferenceSection() {
 
             {/* Card 4: Right Mid - AI Expertise & Strategy (Instagram Purple Accent) */}
             <div 
-              className="card-fan-item w-[220px] sm:w-[240px] lg:w-[250px] shrink-0 bg-white text-[#0B1220] rounded-[24px] p-5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.12)] border border-[#E2E8F0]"
+              className="card-fan-item w-[200px] sm:w-[220px] lg:w-[240px] shrink-0 bg-white text-[#0B1220] rounded-[24px] p-5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.12)] border border-[#E2E8F0]"
               style={{
                 transform: 'rotateY(-7deg) rotateZ(1deg) scale(0.97)',
                 transformOrigin: 'left center'
@@ -186,7 +186,7 @@ export default function HeroReferenceSection() {
 
             {/* Card 5: Right Wing - Growth Trend Chart */}
             <div 
-              className="card-fan-item w-[210px] sm:w-[230px] lg:w-[240px] shrink-0 bg-white text-[#0B1220] rounded-[24px] p-5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.12)] border border-[#E2E8F0]"
+              className="card-fan-item w-[190px] sm:w-[210px] lg:w-[230px] shrink-0 bg-white text-[#0B1220] rounded-[24px] p-5 shadow-[0_20px_40px_-12px_rgba(11,18,32,0.12)] border border-[#E2E8F0] hidden sm:block"
               style={{
                 transform: 'rotateY(-14deg) rotateZ(2.5deg) scale(0.92)',
                 transformOrigin: 'left center'

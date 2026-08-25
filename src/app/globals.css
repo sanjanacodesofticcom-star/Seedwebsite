@@ -36,9 +36,9 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Segoe UI', 'Inter', sans-serif;
 
-  /* Layout Constants */
+  /* Layout Constants - 1440px Width */
   --header-height: 80px;
-  --container-max: 1320px;
+  --container-max: 1440px;
 
   /* Radius System */
   --radius-card: 24px;
@@ -78,10 +78,10 @@ body {
   overflow-x: hidden;
 }
 
-/* Container Standard */
+/* Container Standard - 1440px Maximum Width */
 .container-xl {
   width: 100%;
-  max-width: var(--container-max);
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 24px;
@@ -320,6 +320,17 @@ h1, h2, h3, h4, h5, h6 {
 .input-clean:focus {
   border-color: var(--brand-lime);
   box-shadow: 0 0 0 3px rgba(171, 239, 6, 0.3);
+}
+
+/* Scrollbar suppression */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
 }
 
 /* Reduced Motion Override */
