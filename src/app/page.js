@@ -5,6 +5,7 @@ import ServicesReferenceGrid from '@/components/ServicesReferenceGrid';
 import TrainAIAgentPanel from '@/components/TrainAIAgentPanel';
 import BlogSection from '@/components/BlogSection';
 import ToolsIntegrationRow from '@/components/ToolsIntegrationRow';
+import TestimonialSection from '@/components/TestimonialSection';
 import FAQAccordion from '@/components/FAQAccordion';
 import { faqsData } from '@/data/faqs';
 import { ShieldCheck, ArrowRight, CheckCircle2, MessageSquare } from 'lucide-react';
@@ -148,7 +149,7 @@ export default function HomePage() {
       {/* 8. Connect Your Tools Easily */}
       <ToolsIntegrationRow />
 
-      {/* 9. Direct WhatsApp CTA Banner */}
+      {/* 9. Direct WhatsApp CTA Banner (Instant WhatsApp Connection) */}
       <section className="section-compact bg-white">
         <div className="container-xl">
           <div className="bg-[#0B1220] rounded-[28px] p-8 sm:p-14 text-white relative overflow-hidden border border-[#1E293B] shadow-2xl">
@@ -197,7 +198,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. FAQ Accordion */}
+      {/* 10. Testimonial Section (Placed directly after Instant WhatsApp Connection) */}
+      <TestimonialSection />
+
+      {/* 11. FAQ Accordion */}
       <FAQAccordion items={faqsData.home} />
     </div>
   );
